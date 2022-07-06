@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>Formation.mg</title>
+    <title>Paie.mg</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
@@ -21,7 +21,7 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="{{asset('assets/css/styleGeneral.css')}}">
-    <link rel="shortcut icon" href="{{  asset('maquette/logo_fmg7635dc.png') }}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{  asset('img/logos_all/iconPaie.webp') }}" type="image/x-icon">
     <link rel="stylesheet" href="{{asset('assets/css/configAll.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/mahafaly.css')}}">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -249,7 +249,7 @@
         <div class="container-fluid p-0 height-100 bg-light" id="content">
             <header class="header row align-items-center g-0" id="header">
                 <div class="col-3 d-flex flex-row padding_logo">
-                    <span><img src="{{asset('img/logos_all/iconFormation.webp')}}" alt="" class="img-fluid menu_logo me-3"></span>@yield('title')
+                    <span><img src="{{asset('img/logos_all/iconPaie.webp')}}" alt="" class="img-fluid menu_logo me-3"></span>@yield('title')
                 </div>
                 <div class="col-4 align-items-center justify-content-start d-flex flex-row ">
                     @canany(['isReferent','isStagiaire','isManager','isReferentSimple'])
@@ -605,7 +605,7 @@
                                                     @endcan
                                                 </div>
                                                 <div class="col-4 px-0 logo_suite">
-                                                    <a href="#" class="text-center justify-content-center d-flex flex-column"><img src="{{asset('img/logos_all/iconFormation.webp')}}" alt="logo formation" width="35px" height="35px" class="img-responsive mb-2"><span>formation</span></a>
+                                                    <a href="#" class="text-center justify-content-center d-flex flex-column"><img src="{{asset('img/logos_all/iconPaie.webp')}}" alt="logo formation" width="35px" height="35px" class="img-responsive mb-2"><span>formation</span></a>
                                                 </div>
                                                 <div class="col-4 px-0 logo_suite">
                                                     <a href="#" class="text-center justify-content-center d-flex flex-column"><img src="{{asset('img/logos_all/iconPaie.webp')}}" alt="logo formation" width="35px" height="35px" class="img-responsive mb-2"><span>paie</span></a>
@@ -631,7 +631,7 @@
                                         <div class="card-title">
                                             <div class="row px-3">
                                                 <div class="col-7">
-                                                    <span class="titre_card_profil"><img src="{{asset('img/logos_all/iconFormation.webp')}}" alt="logo_mini" title="logo formation.mg" width="30px" height="30px">Formation.mg</span>
+                                                    <span class="titre_card_profil"><img src="{{asset('img/logos_all/iconPaie.webp')}}" alt="logo_mini" title="logo Paie.mg" width="30px" height="30px">Paie.mg</span>
                                                 </div>
                                                 <div class="col-5 text-center">
                                                     <div class="logout">
