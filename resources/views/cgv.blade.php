@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="{{asset('../assets/css/smooth_page.css')}}">
     <link rel="stylesheet" href="{{ asset('maquette/style_maquette.css') }}">
     <script src="{{ asset('maquette/javascript.js') }}"></script>
-    <link rel="shortcut icon" href="{{  asset('maquette/real_logo.ico') }}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{  asset('img/logos_all/iconPaie.webp') }}" type="image/x-icon">
     <style>
         h6{
             text-align: justify;
@@ -34,7 +34,7 @@
                 <div class="left_menu ms-2">
                     <a style=" text-decoration: none;" href="{{ route('accueil_perso') }}">
                         <p class="titre_text m-0 p-0" style="color: black;">
-                        <img class="img-fluid" src="{{ asset('maquette/logo_fmg54Ko.png') }}" width="40px" height="40px"> Paie.mg</p>
+                        <img class="img-fluid" src="{{ asset('img/logos_all/iconPaie.webp') }}" width="40px" height="40px"> Paie.mg</p>
                     </a>
                 </div>
                 <div class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

@@ -136,7 +136,6 @@
                         <div class="formulaire text-center mt-3" style="display: flex;">
                             <input name="value_confident" required class="form-check-input align-middle" type="checkbox"
                                 value="1" id=""> &nbsp;<p class="align-middle"><a
-                                    href="{{route('create-compte')}}"
                                     href="{{route('condition_generale_de_vente')}}"
                                     target="_blank"
                                     class="nav-item lien_confidentiel" style="font-size: 14px">J'ai lu et accepter les
