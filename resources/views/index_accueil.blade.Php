@@ -4,6 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="Description" content="Les logiciels de gestion de paie permettent de gérer les fiches de paie,
+    mais aussi les heures de travail ou encore les congés.
+    Ces solutions offrent une opportunité bien moins coûteuse qu'un expert-comptable et permettent de gagner 2 à 3 jours par mois par rapport à une gestion de la paie manuelle.">
+    <meta name="keywords" content="salaire, gestion de salaire, comptabilité, compta, gestion, paie, banque, solution de paie, payer">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
@@ -13,8 +17,8 @@
     <link rel="shortcut icon" href="{{asset('img/logos_all/iconPaie.webp') }}" type="image/x-icon">
     <link rel="stylesheet" href="{{asset('assets/css/index_accueil.css')}}">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
-
-    <title> Paie.mg </title>
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    <title> Paie.mg - Logiciel de gestion de salaire </title>
 </head>
 
 <body>
@@ -38,30 +42,23 @@
                             <a class="nav-link dropdown-toggle links" href="" id="navbarDropdown" role="button"
                                 data-bs-toggle="dropdown" aria-expanded="false">Fonctionnalités</a>
                             <ul class="dropdown-menu p-3" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item pt-2" href="{{url('moderne')}}" target="_blank" rel="noopener noreferrer"><i
+                                <li><a class="dropdown-item pt-2" href="#" rel="noopener noreferrer"><i
                                             class="far fa-mouse-pointer center icon_back"></i> &nbsp; Moderne, flexible
                                         et sécurisé</a></li>
-                                <li><a class="dropdown-item pt-2" href="{{url('gestiond')}}" target="_blank" rel="noopener noreferrer"><i
-                                            class="fad fa-file-alt icon_back2"></i> &nbsp; Gestion docummentaire</a>
+                                <li><a class="dropdown-item pt-2" href="#" rel="noopener noreferrer"><i
+                                            class="far fa-user icon_back5"></i> &nbsp; Bulettin de paie</a></li>
+                                <li><a class="dropdown-item pt-2" href="#" rel="noopener noreferrer"><i
+                                            class="fad fa-file-alt icon_back2"></i> &nbsp; Gestion de salaire</a>
                                 </li>
-                                {{-- <li>
-                                    <hr class="dropdown-divider">
-                                </li> --}}
-                                <li><a class="dropdown-item pt-2" href="{{url('gestionf')}}" target="_blank" rel="noopener noreferrer"><i
+                                <li><a class="dropdown-item pt-2" href="#" rel="noopener noreferrer"><i
+                                            class="fad fa-clipboard icon_back6"></i> &nbsp; Paramétrage personnalisé</a></li>
+                                <li><a class="dropdown-item pt-2" href="#" rel="noopener noreferrer"><i
                                             class="fad fa-euro-sign icon_back3"></i> &nbsp; Gestion financière</a></li>
-                                <li><a class="dropdown-item pt-2" href="{{url('gestiona')}}" target="_blank" rel="noopener noreferrer"><i
-                                            class="fad fa-calendar-check icon_back4"></i>&nbsp; Gestion
+                                <li><a class="dropdown-item pt-2" href="#" rel="noopener noreferrer"><i
+                                            class="fad fa-calendar-check icon_back4"></i> &nbsp; Gestion
                                         administrative</a></li>
-                                <li><a class="dropdown-item pt-2" href="{{url('gestionc')}}" target="_blank" rel="noopener noreferrer"><i
-                                            class="far fa-user icon_back5"></i>&nbsp; Gestion commerciale</a></li>
-                                <li><a class="dropdown-item pt-2" href="{{url('qualite')}}" target="_blank" rel="noopener noreferrer"><i
-                                            class="fad fa-clipboard icon_back6"></i>&nbsp; Qualité</a></li>
-                                <li><a class="dropdown-item pt-2" href="{{url('communication')}}" target="_blank" rel="noopener noreferrer"><i
-                                            class="fad fa-comments-alt icon_back7"></i>&nbsp; Communication</a></li>
-                                <li><a class="dropdown-item pt-2" href="{{url('elearning')}}" target="_blank" rel="noopener noreferrer"><i
-                                            class="fad fa-laptop icon_back8"></i>&nbsp; E-learning</a></li>
-                                <li><a class="dropdown-item pt-2" href="{{url('fonctionnalitea')}}" target="_blank" rel="noopener noreferrer"><i
-                                            class="fad fa-search icon_back9"></i>&nbsp; Fonctionnalités avancées</a>
+                                <li><a class="dropdown-item pt-2" href="#" rel="noopener noreferrer"><i
+                                            class="fad fa-search icon_back9"></i> &nbsp; Fonctionnalités avancées</a>
                                 </li>
                             </ul>
                         </li>
@@ -98,13 +95,14 @@
             <section class="section1 mb-5">
                 <div class="row h-100">
                     <div class="container p-0 g-0">
-                        <div class="col-6 section1_text g-0 m-0">
-                            <h1>Plateforme collaborative de gestion de formation</h1>
-                            <p class="pt-5 pe-5">La première plateforme malagasy de gestion de formation, un outil
-                                incontournable et innovateur du milieu professionnel. <br> Découvrez les horizons
-                                de notre logiciel et en quoi il vous est indispensable.
+                        <div class="col-7 section1_text text-dark g-0 m-0">
+                            <h1>Plateforme de gestion de salaire en ligne</h1>
+                            <p class="col-10 pt-4 pe-5">
+                                La première plateforme malagasy de gestion de paie, un outil incontournable et innovateur du milieu professionnel.
+                                <br>
+                                Découvrez les horizons de notre logiciel et en quoi il vous est indispensable.
                             </p>
-                            <a href="#" role="button" class="commencer">Demander un démo</a>
+                            <a href="{{ route('sign-in') }}" role="button" class="commencer">Commencer</a>
                         </div>
                     </div>
                 </div>
@@ -116,15 +114,13 @@
                         <div class="col-12 section2_img">
                             <img src="{{asset('img/logos_all/iconPaie.webp')}}" alt="logo" class="img-fluid">
                         </div>
-                        <h1 class="text-center mb-3">Bienvenue chez Paie.mg</h1>
-                        {{-- <h1 class="text-center mb-5">Paie.mg, l'innovation digital au sein des organismes de formations</h1> --}}
+                        <h2 class="text-center mb-3">Bienvenue chez Paie.mg</h2>
                         <div class="text_about">
-                            <p >Paie.mg offre la meilleur del'innovation numérique aux
-                                spécialistes de la formation. Nos solutions sont le fruit d'une collaboration entre des
-                                responsables d'organismes de
-                                formation chevronnés et les dirigeants des entreprises.Grâce a cette collaboration, nous
-                                offorns des solutions ergonomiques et innovantes spécifiquement conçus pour repondre aux
-                                exigences quotidiennes des centres de formation et des entreprises.
+                            <p >Paie.mg offre la meilleur de l'innovation numérique aux
+                                différentes petites et grandes entreprises. Le logiciel de gestion de paie permet de gérer les fiches de paie,
+                                mais aussi les heures de travail ou encore les congés.
+                                Ces solutions offrent une opportunité bien moins coûteuse qu'un expert-comptable et permettent de gagner
+                                2 à 3 jours par mois par rapport à une gestion de la paie manuelle.
                             </p>
                         </div>
                     </div>
@@ -137,10 +133,12 @@
                             <img src="{{asset('images/background_images/18section3 - copie.webp')}}" alt="image1" class="img-fluid">
                         </div>
                         <div class="col-6 text">
-                            <h1 class="mb-5">Vous êtes un organisme de formation ?</h1>
+                            <h2 class="mb-5">Logiciel Paie Solution Autonome</h2>
                             <p>Toutes nos fonctionnalités sont faites pour perfectionner vos services !</p>
-                            <p>Gestion de formation, facturation, documentation, commerciale ainsi que le Power BI sur mesure intégré, des outils élaborés pour faciliter, améliorer le pilotage
-                                et les prises de décidions stratégiques au sein de votre entreprise, vous permettant ainsi d'atteindre vos objectifs avec agilité.
+                            <p>Dans un contexte d’évolutions légales permanentes, la production de votre paie doit rimer avec conformité et fiabilité.
+                                Quels que soient la taille de votre entreprise et vos besoins,<br>
+                                Paie.mg vous propose une solution : un logiciel de paie pour
+                                gérer vous même vos bulletins .
                             </p>
                         </div>
                     </div>
@@ -150,21 +148,18 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-6 text">
-                            <h1 class="mb-5">Vous êtes employeur ?</h1>
-                            <p> Accès facile, sécurisé et instantané.</p>
-                            <p>Accédez facilement au marché des formations professionnelles et trouvez ce dont vous
-                                avez besoin sans vous déplacer.
+                            <h2 class="mb-5">Sécurité et Sérénité</h2>
+                            <p>Parce que l’essentiel est la sécurité de votre paie, Paie.mg offrira à votre entreprise une sécurité des
+                                données et une productivité accrue grâce à un programmateur de paie experimenté,<br>
+                                une gestion des tâches de saisie collectives simple, de datation des événements automatisés, mais également
+                                la possibilité de paramétrer des champs et faire un suivi des dossiers pour une sécurité renforcée..
                             </p>
-                            <p>Solution ergonomique à vos problèmes quotidiens ! <br>
-                                Gérez votre entreprise ( dépenses, budgets, personnel, factures, données,
-                                évaluations du personnel,...) n'importe où,
-                                à n'importe quel moment via Paie.mg et dites adieu à vos tâches administratives
-                                redondantes et ennuyeuses,
-                                les archives en paperasse volumineuses,...
+                            <p>
+                                Profitez d’une solution toujours à jour pour travailler en toute sérénité...
                             </p>
                         </div>
                         <div class="col-6 image">
-                            <img src="{{asset('images/background_images/15section4 - copie.webp')}}" alt="image1" class="img-fluid">
+                            <lottie-player src="{{asset('lottie/security.json')}}" background="transparent"  speed="0.6"  style="width: 75%;" loop autoplay></lottie-player>
                         </div>
                     </div>
                 </div>
@@ -173,7 +168,7 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-6 text">
-                            <h1 class="mb-5 text-center">Parlons de vos projets !</h1>
+                            <h2 class="mb-5 text-center text-white">Parlons de vos projets !</h2>
                         </div>
                         <div class="col-6 image text-center">
                             <a href="{{url('contact')}}" target="_blank" rel="noopener noreferrer" role="button" class="commencer">Nous contacter</a>
@@ -184,14 +179,6 @@
             <section class="section6">
                 <div class="row">
                     <div class="container">
-                        <h1 class="text-center mb-3">Pourquoi Paie.mg est le logiciel qu'il vous faut ?</h1>
-                        {{-- <h1 class="text-center mb-5">Paie.mg, l'innovation digital au sein des organismes de formations</h1> --}}
-                        <div class="text_about mb-5">
-                            <p >
-                                Paie.mg est un logiciel de gestion de type SaaS qui s'adresse exclusivement aux centres de formation et les entreprises.
-                                Grâce à ses fonctionnalités développées spécialement pour le secteur de la formation, Paie.mg optimise grandement vos processus d'administration et facilite la planification de vos actions de formation.
-                            </p>
-                        </div>
                         <div class="card_fonctions mt-2">
                             <div class="container">
                                 <div class="row">
@@ -222,64 +209,40 @@
                     </div>
                 </div>
             </section>
-            <section class="section7">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-4 image ps-5">
-                            <img src="{{asset('images/background_images/16section7 - copie.webp')}}" alt="image1" class="img-fluid">
-                        </div>
-                        <div class="col-8 text">
-                            <h1 class="mb-5">Simplifiez votre quotidien avec Paie.mg</h1>
-                            <p>Organisme de formation, votre métier nécessite une gestion administrative <br> et une organisation sans faille.
-                                Découvrez comment Paie.mg peut vous aider à atteindre vos objectifs plus facilement.
-                            </p>
-                            <a href="#" role="button" class="commencer text-center">Demander un démo</a>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <section class="section8">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-12 text d-flex flex-column">
-                            <a href="{{url('contact')}}" class="text-uppercase text-center mb-3" rel="noopener noreferrer" target="_blank">contact@formation.mg</a>
-                            <a href="{{url('contact')}}" target="_blank" rel="noopener noreferrer" class="text-uppercase text-center">034&nbsp;03&nbsp;876&nbsp;09</a>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <section class="section9">
-                <div class="container-fluid">
-                    <div class="row d-flex flex-column">
-                        <div class="d-flex mb-3">
-                            <div class="bordure">&copy; Copyright 2022</div>
-                            <div class="bordure"><a href="{{url('info_legale')}}" target="_blank" rel="noopener noreferrer">Informations légales</a></div>
-                            <div class="bordure"><a href="{{url('contact')}}" target="_blank" rel="noopener noreferrer">Contactez-nous</a></div>
-                            <div class="bordure"><a href="{{url('politique_confidentialites')}}" target="_blank" rel="noopener noreferrer">Politique de
-                                    confidentialités</a></div>
-
-                            <div class="bordure">
-                                <a href="{{route('condition_generale_de_vente')}}" target="_blank" rel="noopener noreferrer">
-                                    Condition
-                                    d'utilisation
-                                </a>
-                            </div>
-                            <div class="bordure"> <a href="{{url('tarifs')}}" target="_blank" rel="noopener noreferrer"> Tarifs</a></div>
-                            <div class="bordure"><a href="#" target="_blank" rel="noopener noreferrer">Crédits</a></div>
-                            <div class="ps-3 version">V 1.0.9</div>
-                        </div>
-                        <div class="droits">2022 @ Paie.mg - Tous les droits sont réservés -
-                            <span>
-                            <a href="{{route('condition_generale_de_vente')}}" target="_blank" rel="noopener noreferrer">
-                                CGU
-                            </a>
-                            </span>
-                        </div>
-                    </div>
-                </div>
-            </section>
         </div>
     </main>
+    <footer>
+        <section class="section9">
+            <div class="container-fluid">
+                <div class="row d-flex flex-column">
+                    <div class="d-flex mb-3">
+                        <div class="bordure">&copy; Copyright 2022</div>
+                        <div class="bordure"><a href="{{url('info_legale')}}" target="_blank" rel="noopener noreferrer">Informations légales</a></div>
+                        <div class="bordure"><a href="{{url('contact')}}" target="_blank" rel="noopener noreferrer">Contactez-nous</a></div>
+                        <div class="bordure"><a href="{{url('politique_confidentialites')}}" target="_blank" rel="noopener noreferrer">Politique de
+                                confidentialités</a></div>
+
+                        <div class="bordure">
+                            <a href="{{route('condition_generale_de_vente')}}" target="_blank" rel="noopener noreferrer">
+                                Condition
+                                d'utilisation
+                            </a>
+                        </div>
+                        <div class="bordure"> <a href="{{url('tarifs')}}" target="_blank" rel="noopener noreferrer"> Tarifs</a></div>
+                        <div class="bordure"><a href="#" target="_blank" rel="noopener noreferrer">Crédits</a></div>
+                        <div class="ps-3 version">V 1.0.9</div>
+                    </div>
+                    <div class="droits">2022 @ Paie.mg - Tous les droits sont réservés -
+                        <span>
+                        <a href="{{route('condition_generale_de_vente')}}" target="_blank" rel="noopener noreferrer">
+                            CGU
+                        </a>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </footer>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
         integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
     </script>
