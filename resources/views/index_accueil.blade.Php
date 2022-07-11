@@ -95,7 +95,7 @@
             <section class="section1 mb-5">
                 <div class="row h-100">
                     <div class="container p-0 g-0">
-                        <div class="col-7 section1_text text-dark g-0 m-0">
+                        <div class="col-7 section1_text g-0 m-0">
                             <h1>Plateforme de gestion de salaire en ligne</h1>
                             <p class="col-10 pt-4 pe-5">
                                 La première plateforme malagasy de gestion de paie, un outil incontournable et innovateur du milieu professionnel.
