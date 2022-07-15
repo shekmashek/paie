@@ -24,7 +24,6 @@ class HomeController extends Controller
     public function index(Request $request)
     {
         $desigations_sociale = DB::table('paie_cotisations')->get();
-        /* $designation_sbase = DB::table('paie_designations')->where('id',1)->get()->first(); */
         $numeraires = DB::table('paie_salaire_numeraires')->get();
         $avantages = DB::table('paie_avantage_en_natures')->get();
         $primes = DB::table('paie_prime_indemnites')->get();
