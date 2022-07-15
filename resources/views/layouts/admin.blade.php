@@ -1,4 +1,4 @@
-{{-- @inject("domaine", 'App\Domaine') --}}
+@inject("domaine", 'App\Domaine')
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,19 +13,14 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-        integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/fontawesome.min.css"
-        integrity="sha512-8Vtie9oRR62i7vkmVUISvuwOeipGv8Jd+Sur/ORKDD5JiLgTGeBSkI3ISOhc730VGvA5VVQPwKIKlmi+zMZ71w=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="{{asset('assets/css/styleGeneral.css')}}">
     <link rel="shortcut icon" href="{{  asset('maquette/logo_fmg7635dc.png') }}" type="image/x-icon">
     <link rel="stylesheet" href="{{asset('assets/css/configAll.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/mahafaly.css')}}">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     <style>
         .modal-backdrop{
             z-index: 1 !important;
@@ -136,6 +131,7 @@
 
             </li>
             @endcanany
+            {{-- projet de formation --}}
             @canany(['isReferent','isReferentSimple','isManager'])
             <li>
                 <a href="{{route('liste_projet')}}" class="d-flex projet nav_linke">
@@ -183,6 +179,8 @@
             </li>
             @endcanany
             @canany(['isReferent'])
+            @endcanany
+            {{-- Referent --}}
             @canany(['isAdmin','isSuperAdmin'])
             <li>
                 <a href="{{route('utilisateur_superAdmin')}}" class="d-flex superadmin nav_linke">
@@ -200,12 +198,15 @@
                 </a>
 
             </li>
+
             @endcanany
             {{-- competence --}}
             @canany(['isReferent','isManager'])
             @canany(['isReferent'])
             @endcanany
             @endcanany
+
+            {{-- plan de formation --}}
             @canany(['isStagiaire','isManager','isReferent','isReferentSimple'])
             <li>
                 <a @canany(['isStagiaire']) href="{{route('planFormation.index')}}" @endcanany
@@ -242,6 +243,7 @@
             </li>
 
             @endcan
+        </ul>
 
     </div>
 
@@ -608,7 +610,7 @@
                                                     <a href="#" class="text-center justify-content-center d-flex flex-column"><img src="{{asset('img/logos_all/iconFormation.webp')}}" alt="logo formation" width="35px" height="35px" class="img-responsive mb-2"><span>formation</span></a>
                                                 </div>
                                                 <div class="col-4 px-0 logo_suite">
-                                                    <a href="#" class="text-center justify-content-center d-flex flex-column"><img src="{{asset('img/logos_all/iconPaie.webp')}}" alt="logo formation" width="35px" height="35px" class="img-responsive mb-2"><span>paie</span></a>
+                                                    <a href="" class="text-center justify-content-center d-flex flex-column"><img src="{{asset('img/logos_all/iconPaie.webp')}}" alt="logo formation" width="35px" height="35px" class="img-responsive mb-2"><span>paie</span></a>
                                                 </div>
                                             </div>
                                             <div class="row mt-4">
@@ -655,8 +657,8 @@
                                                     </span>
                                                 </div>
                                                 <div class="col-10 ps-4">
-                                                    <h6 class="mb-0 ">{{Auth::user()->name}}</h6>
-                                                    <h6 class="mb-0 text-muted text_mail">{{Auth::user()->email}}</h6>
+                                                    <h6 class="mb-0 ">{{-- {{Auth::user()->name}} --}}</h6>
+                                                    <h6 class="mb-0 text-muted text_mail">{{-- {{Auth::user()->email}} --}}</h6>
                                                     <p id="nom_etp" class="mt-2"></p>
                                                 </div>
                                             </div>
@@ -664,7 +666,7 @@
                                                 <div class="col-12">
                                                     <div class="row">
                                                         <div class="col">
-                                                            <input type="text" value="{{Auth::user()->id}}" id="id_user" hidden>
+                                                            <input type="text" value="{{-- {{Auth::user()->id}} --}}" id="id_user" hidden>
                                                             <span class="text-muted p-0 test_font">Connécté en tant que :</span>
                                                         </div>
                                                         <div class="col p-0">
@@ -701,7 +703,7 @@
 
                     </div>
                 </div>
-                {{-- @can('isCFP')
+                @can('isCFP')
                     <div>
                         <div class="modal fade" id="nouveau_module" tabindex="-1"
                             role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -743,11 +745,9 @@
                             </div>
                         </div>
                     </div>
-                @endcan --}}
+                @endcan
 
             </header>
-            {{-- header --}}
-            {{-- content --}}
             <div class="container-fluid content_body px-0 " style="padding-bottom: 1rem; padding-top: 4.5rem;">
                 @yield('content')
 
@@ -822,15 +822,22 @@
                     @can('isFormateur')
                     <div class="tutorielApprendreFormateur">Formateur</div>
                     @endcan
+
                 </div>
             </div>
-
         </div>
     </div>
 
-    <script src="{{asset('js/admin.js')}}"></script>
-    <script src="{{asset('js/apprendre.js')}}"></script>
-    <script src="{{ asset('assets/js/jquery.js') }}"></script>
+    {{-- <script src="https://code.iconify.design/2/2.1.2/iconify.min.js"></script> --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.2/umd/popper.min.js"
+        integrity="sha512-aDciVjp+txtxTJWsp8aRwttA0vR2sJMk/73ZT7ExuEHv7I5E6iyyobpFOlEFkq59mWW8ToYGuVZFnwhwIUisKA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    {{-- <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js"
+        integrity="sha384-rOA1PnstxnOBLzCLMcre8ybwbTmemjzdNlILg8O7z1lUkLXozs4DHonlDtnE7fpc" crossorigin="anonymous">
+    </script> --}}
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/js/bootstrap.min.js" integrity="sha512-a6ctI6w1kg3J4dSjknHj3aWLEbjitAXAjLDRUxo2wyYmDFRcz2RJuQr5M3Kt8O/TtUSp8n2rAyaXYy1sjoKmrQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <meta name="csrf-token" content="{{ csrf_token() }}" />
 
     <script type="text/javascript">
@@ -841,6 +848,7 @@
         $("#acf-domaine").change(function() {
             var id = $(this).val();
             $(".categ").empty();
+
             $.ajax({
                 url: "/get_formation",
                 type: "get",
@@ -888,110 +896,6 @@
         $('.module_redirect').on('click', function (e) {
             localStorage.setItem('ActiveTabMod', '#publies');
         });
-
-        $(document).ready(function() {
-
-            var pdp = "";
-            $.ajax({
-                url: '{{ route("profile_resp") }}'
-                , type: 'get'
-                , success: function(response) {
-                    if(response['photo'] == 'oui'){
-                        var html = '<img src="{{asset(":?")}}" alt="user_profile" style="width : 70px; height : 70px; border: none; border-radius : 100%; display: grid; place-content: center">';
-                        html = html.replace(":?", response['user']);
-                        $('.photo_users').append(html);
-
-                    }
-                    if(response['photo'] == 'non'){
-                        var html = response['user'][0]['nm']+''+response['user'][0]['pr'];
-                        $('.photo_users').append(html);
-                    }
-                    $('.badge_invitation').text("");
-                    $('.badge_invitation').append(response['invitation'].length);
-                    if(response['invitation'].length == 0){
-                        var html = "Aucun invitations en attente";
-                        $('.test_affiche1').append(html);
-                        $('.test_affiche1').css('textAlign','center');
-
-                    }else{
-                        for (let i = 0; i < response['invitation'].length; i++){
-                            $('.test_affiche1').append('<li class="invitation_'+response['invitation'][i]['demmandeur_etp_id']+' text-center"><span class="me-2">'+response['invitation'][i]['nom_resp']+'</span><span class="me-2">'+response['invitation'][i]['prenom_resp']+'</span>|&nbsp;&nbsp;<span class="me-2">'+response['invitation'][i]['email_etp']+'</span>|&nbsp;&nbsp;<span class="me-2">'+response['invitation'][i]['nom_etp']+'</span>|&nbsp;&nbsp;<span>'+response['invitation'][i]['nom_secteur']+'</span> <span id="'+response['invitation'][i]['demmandeur_etp_id']+'" class="btn btn-sm accepte" title="accepter l\'invitation" role="button"><i class="bx bx-check-double bx_ajouter"></i></span> <span id="ref_'+response['invitation'][i]['demmandeur_etp_id']+'" class="btn refuse" title="refuser l\'invitation" role="button" data-id="'+response['invitation'][i]['demmandeur_etp_id']+'"><i class="bx bx-x bx_supprimer"></i></span></li>');
-
-                            $(".accepte").on("click", function(e) {
-                                let id = $(e.target).closest(".accepte").attr("id");
-                                $.ajax({
-                                    type: "get",
-                                    url: " {{ route('accept_invitation_cfp_etp_notif') }}",
-                                    data: {
-                                        Id: id,
-                                    },
-                                    success: function(response) {
-
-                                        console.log(".invitation_" + id);
-                                        $(".invitation_" + id).remove();
-                                        $('.badge_invitation').text("");
-                                        $('.badge_invitation').append(i);
-                                        toastr.success('Une invitation a été accéptée');
-                                    },
-                                    error: function(error) {
-                                    console.log(error);
-                                    },
-                                });
-                            });
-
-
-                            $(".refuse").on("click", function(e) {
-                                let id = $(this).data("id");
-                                $.ajax({
-                                    type: "get",
-                                    url: " {{ route('annulation_cfp_etp_notif') }}",
-                                    data: {
-                                        Id: id,
-                                    },
-                                    success: function(response) {
-                                        $(".invitation_" + id).remove();
-                                        $('.badge_invitation').text("");
-                                        $('.badge_invitation').append(i);
-                                        toastr.warning('Une invitation à été réfuser');
-                                    },
-                                    error: function(error) {
-                                    console.log(error);
-                                    },
-                                });
-                            });
-                        }
-                    }
-
-
-                }
-                , error: function(error) {
-                    console.log(error);
-                }
-            });
-        });
-
-        $(document).ready(function() {
-            $.ajax({
-                url: '{{ route("aff_refuse_etp_cfp") }}'
-                , type: 'get'
-                , success: function(response) {
-                    if(response['refuse_invitation'].length == 0){
-                        var html = 'Aucun invitations refusée';
-                        $('.test_affiche2').append(html);
-                        $('.test_affiche2').css('textAlign','center');
-
-                    }else{
-                        for (let i = 0; i < response['refuse_invitation'].length; i++){
-                            $('.test_affiche2').append('<li class="invitation_'+response['refuse_invitation'][i]['demmandeur_etp_id']+' text-center"><span class="me-2">'+response['refuse_invitation'][i]['email_etp']+'</span>|&nbsp;&nbsp;<span class="me-2">'+response['refuse_invitation'][i]['nom_etp']+'</span>|&nbsp;&nbsp;<span>'+response['refuse_invitation'][i]['nom_secteur']+'</span></li>');
-                        }
-                    }
-                }
-                , error: function(error) {
-                    console.log(error);
-                }
-            });
-        });
-
         $('.prevent_affichage').on('click', function(e){
             e.stopPropagation();
         });
