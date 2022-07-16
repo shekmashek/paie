@@ -235,50 +235,55 @@ $( function() {
     /* Calcule taux horaire */
     $('.input-salaire-Base').on("input", function(e) {
         var base = $(this).val();
-        $(this).parent().parent().children('.td-Gain-salar-num').children('.Gain-salar-num').html(base);
+        $(this).parent().parent().children('.td-Gain-salar-num').children('.Gain-salar-num').html(base.replace(/\B(?=(\d{3})+(?!\d))/g, ","));
         $(this).parent().parent().children('.td-Gain-salar-num').children('.Gain-salar-num').prev().val(base);
         var taux_horaire = calul_taux_horaire(base);
-        $('#taux_horaire').html(taux_horaire);
-        $('.td-Base-auto').html(taux_horaire);
+        $('#taux_horaire').html(taux_horaire.replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+        $('.td-Base-auto').html(taux_horaire.replace(/\B(?=(\d{3})+(?!\d))/g, ","));
         $(".input-Nombre-h").each(function( index ) {
             var nombre= $(this).val();
-            var choix = $(this).parent().parent().children('.td-choix-num').html();
+            var choix = $(this).parent().parent().children('.td-choix-num').children('.choix-num').html();
             var taux = $(this).parent().parent().children('.td-Taux-salar-num').children('.taux').html();
             var gain_ou_retenu = calcul_heure(nombre,taux);
             if(isNaN(gain_ou_retenu)){
                 gain_ou_retenu=0.00;
             }
             if(choix == 'Gain'){
-                $(this).parent().parent().children('.td-Gain-h').children('.Gain-h').html(gain_ou_retenu);
+                $(this).parent().parent().children('.td-Gain-h').children('.Gain-h').html(gain_ou_retenu.replace(/\B(?=(\d{3})+(?!\d))/g, ","));
                 $(this).parent().parent().children('.td-Gain-h').children('.Gain-h').prev().val(gain_ou_retenu);
                 calcul_salaire_avant_cotisation();
                 calcul_retenu_cotisation();
                 calcul_retenu_cotisation_patr();
                 calcul_total_cotisation();
+                calcul_total_cotisation_patr();
                 calcul_brute_avant_cotisation();
                 calcul_tranche_irsa();
                 calcul_total_irsa();
             }
             var total_gain_numeraire = calcul_total_gain_numeraire();
-            $('.soustotal_gain_num').html(total_gain_numeraire);
+            $('.soustotal_gain_num').html(total_gain_numeraire.replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+            $('.soustotal_gain_num').prev().val(total_gain_numeraire);
         });
         
     });
 /* calcule gain et retenu numeraire */
     $('#tbody').delegate('.input-Nombre-h','input', function(e){
         var nombre= $(this).val();
-        var choix = $(this).parent().parent().children('.td-choix-num').html();
+        var choix = $(this).parent().parent().children('.td-choix-num').children('.choix-num').html();
         var taux = $(this).parent().parent().children('.td-Taux-salar-num').children('.taux').html();
         var gain_ou_retenu = calcul_heure(nombre,taux);
         if(isNaN(gain_ou_retenu)){
             gain_ou_retenu=0.00;
         }
         if(choix == 'Gain'){
-            $(this).parent().parent().children('.td-Gain-h').children('.Gain-h').html(gain_ou_retenu);
+            $(this).parent().parent().children('.td-Gain-h').children('.Gain-h').html(gain_ou_retenu.replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+            $(this).parent().parent().children('.td-Gain-h').children('.Gain-h').prev().val(gain_ou_retenu);
             var total_gain_numeraire = calcul_total_gain_numeraire();
-            $('.soustotal_gain_num').html(total_gain_numeraire);
+            $('.soustotal_gain_num').html(total_gain_numeraire.replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+            $('.soustotal_gain_num').prev().val(total_gain_numeraire);
             calcul_salaire_avant_cotisation();
             calcul_retenu_cotisation();
+            calcul_total_cotisation_patr();
             calcul_retenu_cotisation_patr();
             calcul_total_cotisation();
             calcul_brute_avant_cotisation();
@@ -290,7 +295,7 @@ $( function() {
     /* nombre */
     $('#tbody').delegate('.input-Nombre-num','input', function(e){
         var nombre= $(this).val();
-        var choix = $(this).parent().parent().children('.td-choix-num').html();
+        var choix = $(this).parent().parent().children('.td-choix-num').children('.choix-num').html();
         var base = $(this).parent().parent().children('.td-Base-num').children().val();
         var input_taux = $(this).parent().parent().children('.td-Taux-salar-num').children('.input-Taux-salar').val();
         if(input_taux==0){
@@ -298,26 +303,31 @@ $( function() {
         }
         var gain_ou_retenu = calcul_autre_num(nombre,base,input_taux);
         if(choix == 'Gain'){
-            $(this).parent().parent().children('.td-Gain-salar-num').children('.Gain-salar-num').html(gain_ou_retenu);
+            $(this).parent().parent().children('.td-Gain-salar-num').children('.Gain-salar-num').html(gain_ou_retenu.replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+            $(this).parent().parent().children('.td-Gain-h').children('.Gain-h').prev().val(gain_ou_retenu);
             var total_gain_numeraire = calcul_total_gain_numeraire();
-            $('.soustotal_gain_num').html(total_gain_numeraire);
+            $('.soustotal_gain_num').html(total_gain_numeraire.replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+            $('.soustotal_gain_num').prev().val(total_gain_numeraire);
             calcul_salaire_avant_cotisation();
             calcul_retenu_cotisation();
+            calcul_total_cotisation_patr();
             calcul_retenu_cotisation_patr();
             calcul_total_cotisation();
             calcul_brute_avant_cotisation();
             calcul_tranche_irsa();
             calcul_total_irsa();
         }else if(choix == 'Retenu'){
-            $(this).parent().parent().children('.td-Retenue-salar-num').children('.Retenue-salar-num').html(gain_ou_retenu);
+            $(this).parent().parent().children('.td-Retenue-salar-num').children('.Retenue-salar-num').html(gain_ou_retenu.replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+            $(this).parent().parent().children('.td-Gain-salar-num').children('.Gain-salar-num').html(gain_ou_retenu);
             var calcul_retenu_numeraire = calcul_total_retenu_numeraire();
-            $('#soustotal_retenu_num').html(calcul_retenu_numeraire);
+            $('#soustotal_retenu_num').html(calcul_retenu_numeraire.replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+            $('#soustotal_retenu_num').prev().val(calcul_retenu_numeraire);
         }
     });
     /* base */
     $('#tbody').delegate('.input-Base','input', function(e){
         var base= $(this).val();
-        var choix = $(this).parent().parent().children('.td-choix-num').html();
+        var choix = $(this).parent().parent().children('.td-choix-num').children('.choix-num').html();
         var nombre = $(this).parent().parent().children('.td-Nombre').children().val();
         var input_taux = $(this).parent().parent().children('.td-Taux-salar-num').children('.input-Taux-salar').val();
         if(input_taux==0){
@@ -325,20 +335,25 @@ $( function() {
         }
         var gain_ou_retenu = calcul_autre_num(nombre,base,input_taux);
         if(choix == 'Gain'){
-            $(this).parent().parent().children('.td-Gain-salar-num').children('.Gain-salar-num').html(gain_ou_retenu);
+            $(this).parent().parent().children('.td-Gain-salar-num').children('.Gain-salar-num').html(gain_ou_retenu.replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+            $(this).parent().parent().children('.td-Gain-salar-num').children('.Gain-salar-num').prev().val(gain_ou_retenu);
             var total_gain_numeraire = calcul_total_gain_numeraire();
-            $('.soustotal_gain_num').html(total_gain_numeraire);
+            $('.soustotal_gain_num').html(total_gain_numeraire.replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+            $('.soustotal_gain_num').prev().val(total_gain_numeraire);
             calcul_salaire_avant_cotisation();
             calcul_retenu_cotisation();
-            calcul_retenu_cotisation_patr();
             calcul_total_cotisation();
             calcul_brute_avant_cotisation();
+            calcul_retenu_cotisation_patr();
+            calcul_total_cotisation_patr();
             calcul_tranche_irsa();
             calcul_total_irsa();
         }else if(choix == 'Retenu'){
-            $(this).parent().parent().children('.td-Retenue-salar-num').children('.Retenue-salar-num').html(gain_ou_retenu);
+            $(this).parent().parent().children('.td-Retenue-salar-num').children('.Retenue-salar-num').html(gain_ou_retenu.replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+            $(this).parent().parent().children('.td-Retenue-salar-num').children('.Retenue-salar-num').prev().val(gain_ou_retenu);
             var calcul_retenu_numeraire = calcul_total_retenu_numeraire();
-            $('#soustotal_retenu_num').html(calcul_retenu_numeraire);
+            $('#soustotal_retenu_num').html(calcul_retenu_numeraire.replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+            $('#soustotal_retenu_num').prev().val(calcul_retenu_numeraire);
         }
     });
 
@@ -346,7 +361,7 @@ $( function() {
     $('#tbody').delegate('.input-Taux-salar','input', function(e){
         var input_taux= $(this).val();
         var base= $(this).val();
-        var choix = $(this).parent().parent().children('.td-choix-num').html();
+        var choix = $(this).parent().parent().children('.td-choix-num').children('.choix-num').html();
         var nombre = $(this).parent().parent().children('.td-Nombre').children().val();
         var base = $(this).parent().parent().children('.td-Base-num').children().val();
         if(input_taux==0){
@@ -354,20 +369,25 @@ $( function() {
         }
         var gain_ou_retenu = calcul_autre_num(nombre,base,input_taux);
         if(choix == 'Gain'){
-            $(this).parent().parent().children('.td-Gain-salar-num').children('.Gain-salar-num').html(gain_ou_retenu);
+            $(this).parent().parent().children('.td-Gain-salar-num').children('.Gain-salar-num').html(gain_ou_retenu.replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+            $(this).parent().parent().children('.td-Gain-salar-num').children('.Gain-salar-num').prev().val(gain_ou_retenu);
             var total_gain_numeraire = calcul_total_gain_numeraire();
-            $('.soustotal_gain_num').html(total_gain_numeraire);
+            $('.soustotal_gain_num').html(total_gain_numeraire.replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+            $('.soustotal_gain_num').prev().val(total_gain_numeraire);
             calcul_salaire_avant_cotisation();
             calcul_retenu_cotisation();
             calcul_retenu_cotisation_patr();
             calcul_total_cotisation();
+            calcul_total_cotisation_patr();
             calcul_brute_avant_cotisation();
             calcul_tranche_irsa();
             calcul_total_irsa();
         }else if(choix == 'Retenu'){
-            $(this).parent().parent().children('.td-Retenue-salar-num').children('.Retenue-salar-num').html(gain_ou_retenu);
+            $(this).parent().parent().children('.td-Retenue-salar-num').children('.Retenue-salar-num').html(gain_ou_retenu.replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+            $(this).parent().parent().children('.td-Retenue-salar-num').children('.Retenue-salar-num').prev().val(gain_ou_retenu);
             var calcul_retenu_numeraire = calcul_total_retenu_numeraire();
-            $('#soustotal_retenu_num').html(calcul_retenu_numeraire);
+            $('#soustotal_retenu_num').html(calcul_retenu_numeraire.replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+            $('#soustotal_retenu_num').prev().val(calcul_retenu_numeraire);
         }
     });
 /* /calcule gain et retenu autre */
@@ -378,13 +398,15 @@ $( function() {
         var nombre= $(this).val();
         var base = $(this).parent().parent().children('.td-Base-pi').children().val();
         var gain_ou_retenu = calcul_autre_pi(nombre,base);
-        $(this).parent().parent().children('.td-Gain-salar-pi').children('.Gain-salar-pi').html(gain_ou_retenu);
+        $(this).parent().parent().children('.td-Gain-salar-pi').children('.Gain-salar-pi').html(gain_ou_retenu.replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+        $(this).parent().parent().children('.td-Gain-salar-pi').children('.Gain-salar-pi').prev().val(gain_ou_retenu);
         var total_gain_pi = calcul_total_gain_pi();
         calcul_salaire_avant_cotisation();
         $('.soustotal_gain_pi').html(total_gain_pi);
         calcul_retenu_cotisation();
         calcul_retenu_cotisation_patr();
         calcul_total_cotisation();
+        calcul_total_cotisation_patr()
         calcul_brute_avant_cotisation();
         calcul_tranche_irsa();
         calcul_total_irsa();
@@ -394,13 +416,16 @@ $( function() {
         var base= $(this).val();
         var nombre = $(this).parent().parent().children('.td-Nombre-pi').children().val();
         var gain_ou_retenu = calcul_autre_pi(nombre,base);
-        $(this).parent().parent().children('.td-Gain-salar-pi').children('.Gain-salar-pi').html(gain_ou_retenu);
+        $(this).parent().parent().children('.td-Gain-salar-pi').children('.Gain-salar-pi').html(gain_ou_retenu.replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+        $(this).parent().parent().children('.td-Gain-salar-pi').children('.Gain-salar-pi').prev().val(gain_ou_retenu);
         var total_gain_pi = calcul_total_gain_pi();
-        $('.soustotal_gain_pi').html(total_gain_pi);
+        $('.soustotal_gain_pi').html(total_gain_pi.replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+        $('.soustotal_gain_pi').prev().val(total_gain_pi);
         calcul_salaire_avant_cotisation();
         calcul_retenu_cotisation();
         calcul_retenu_cotisation_patr();
         calcul_total_cotisation();
+        calcul_total_cotisation_patr()
         calcul_brute_avant_cotisation();
         calcul_tranche_irsa();
         calcul_total_irsa();
@@ -411,13 +436,16 @@ $( function() {
         var nombre= $(this).val();
         var base = $(this).parent().parent().children('.td-Base-avn').children().val();
         var gain_ou_retenu = calcul_autre_pi(nombre,base);
-        $(this).parent().parent().children('.td-Gain-salar-avn').children('.Gain-salar-avn').html(gain_ou_retenu);
+        $(this).parent().parent().children('.td-Gain-salar-avn').children('.Gain-salar-avn').html(gain_ou_retenu.replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+        $(this).parent().parent().children('.td-Gain-salar-avn').children('.Gain-salar-avn').prev().val(gain_ou_retenu);
         var total_gain_avn = calcul_total_gain_avn();
-        $('#soustotal_gain_avn').html(total_gain_avn);
+        $('#soustotal_gain_avn').html(total_gain_avn.replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+        $('#soustotal_gain_avn').prev().val(total_gain_avn);
         calcul_salaire_avant_cotisation();
         calcul_retenu_cotisation();
         calcul_retenu_cotisation_patr();
         calcul_total_cotisation();
+        calcul_total_cotisation_patr();
         calcul_tranche_irsa();
         calcul_total_irsa();
     });
@@ -426,13 +454,16 @@ $( function() {
         var base= $(this).val();
         var nombre = $(this).parent().parent().children('.td-Nombre-avn').children().val();
         var gain_ou_retenu = calcul_autre_pi(nombre,base);
-        $(this).parent().parent().children('.td-Gain-salar-avn').children('.Gain-salar-avn').html(gain_ou_retenu);
+        $(this).parent().parent().children('.td-Gain-salar-avn').children('.Gain-salar-avn').html(gain_ou_retenu.replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+        $(this).parent().parent().children('.td-Gain-salar-avn').children('.Gain-salar-avn').prev().val(gain_ou_retenu);
         var total_gain_avn = calcul_total_gain_avn();
-        $('#soustotal_gain_avn').html(total_gain_avn);
+        $('#soustotal_gain_avn').html(total_gain_avn.replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+        $('#soustotal_gain_avn').prev().val(total_gain_avn);
         calcul_salaire_avant_cotisation();
         calcul_retenu_cotisation();
         calcul_retenu_cotisation_patr();
         calcul_total_cotisation();
+        calcul_total_cotisation_patr();
         calcul_tranche_irsa();
         calcul_total_irsa();
     });
@@ -450,9 +481,11 @@ $( function() {
     /* calcul horaire */
     function calcul_heure(nombre,taux){
         var taux_horaire = $('#taux_horaire').html();
+        taux_horaire = taux_horaire.replaceAll(",", "");
         var gain_retenu_salarial = 0;
         if(nombre!=null && nombre!=0){
             gain_retenu_salarial = (taux/100)*nombre*(parseFloat(taux_horaire));
+            console.log(taux_horaire);
         }
         return gain_retenu_salarial.toFixed(2);
     }
@@ -470,6 +503,7 @@ $( function() {
         var t_salaire_num = 0;
         $(".Gain-h").each(function( index ) {
             var gain_h_sup = $(this).html();
+            gain_h_sup = gain_h_sup.replaceAll(",", "");
             if(gain_h_sup==""){
                 gain_h_sup=0;
             }
@@ -477,6 +511,7 @@ $( function() {
         });
         $(".Gain-salar-num").each(function( index ) {
             var salaire_num = $(this).html();
+            salaire_num = salaire_num.replaceAll(",", "");
             if(salaire_num==""){
                 salaire_num=0;
             }
@@ -490,6 +525,7 @@ $( function() {
         var t_retenu_num = 0;
         $(".Retenue-salar-num").each(function( index ) {
             var retenu_num = $(this).html();
+            retenu_num = retenu_num.replaceAll(",", "");
             if(retenu_num==""){
                 retenu_num = 0;
             }
@@ -507,6 +543,7 @@ $( function() {
         var total = 0;
         $(".Gain-salar-pi").each(function( index ) {
             var gain = $(this).html();
+            gain = gain.replaceAll(",", "");
             if(gain==""){
                 gain=0;
             }
@@ -519,6 +556,7 @@ $( function() {
         var total = 0;
         $(".Gain-salar-avn").each(function( index ) {
             var gain = $(this).html();
+            gain = gain.replaceAll(",", "");
             if(gain==""){
                 gain=0;
             }
@@ -534,17 +572,26 @@ $( function() {
     /* calcul salaire brute avant cotisation et  */
     function calcul_salaire_avant_cotisation(){
         var total_num = $('.soustotal_gain_num').html();
+        total_num = total_num.replaceAll(",", "");
         if(total_num=="") total_num=0;
         var total_pi =$('.soustotal_gain_pi').html();
+        total_pi = total_pi.replaceAll(",", "");
         if(total_pi=="") total_pi=0;
         var total_avn = $('#soustotal_gain_avn').html();
+        total_avn = total_avn.replaceAll(",", "");
         if(total_avn=="") total_avn=0;
+        var gain_total_brut = parseFloat(total_num) + parseFloat(total_pi) + parseFloat(total_avn);
         var brute_avant_cotisation = parseFloat(total_num) + parseFloat(total_pi);
         /* var brute_imposable = (brute_avant_cotisation*20)/100;
         if(brute_imposable>200000) brute_imposable=200000; */
-        $('.sal_avant_cotisation').html(brute_avant_cotisation);
-        $('#sal_avant_cotisation').html(brute_avant_cotisation);
-        $('#avantage_nature').html(total_avn);
+        $('#total_gain_brut').html(gain_total_brut.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+        $('#total_gain_brut').prev().val(gain_total_brut);
+        $('.sal_avant_cotisation').html(brute_avant_cotisation.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+        $('.sal_avant_cotisation').prev().val(brute_avant_cotisation);
+        $('#sal_avant_cotisation').html(brute_avant_cotisation.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+        $('#sal_avant_cotisation').prev().val(brute_avant_cotisation);
+        $('#avantage_nature').html(total_avn.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+        $('#avantage_nature').prev().val(total_avn.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
     }
     /* function total gain brut */
     function calcul_gain_total_brut(){
@@ -555,23 +602,28 @@ $( function() {
     /* calcul retenu cotisation salarial */
     function calcul_retenu_cotisation(){
         var sal_avant_cotisation = $('#sal_avant_cotisation').html();
+        sal_avant_cotisation = sal_avant_cotisation.replaceAll(",","");
+        if(sal_avant_cotisation=="") sal_avant_cotisation=0;
         $('.taux-cot-sal').each(function(index){
             var taux = $(this).html();
             var retenu_cot = $(this).parent().parent().children('.td-retenu-cot-sal').children('.retenu-cot-sal');
             if(taux=="") taux=0;
             var retenu_cotisation = (sal_avant_cotisation*taux)/100;
-            retenu_cot.html(retenu_cotisation.toFixed(2));
+            retenu_cot.html(retenu_cotisation.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+            retenu_cot.prev().val(retenu_cotisation.toFixed(2));
         })
     }
     /* calcul retenu cotisation patronal */
     function calcul_retenu_cotisation_patr(){
         var sal_avant_cotisation = $('#sal_avant_cotisation').html();
+        sal_avant_cotisation = sal_avant_cotisation.replaceAll(",","");
         $('.taux-cot-patr').each(function(index){
             var taux = $(this).html();
-            var retenu_cot = $(this).parent().parent().children('.retenu-cot-patr').children('.retenu-cot-patr');
+            var retenu_cot = $(this).parent().parent().children('.td-retenu-cot-patr').children('.retenu-cot-patr');
             if(taux=="") taux=0;
             var retenu_cotisation = (sal_avant_cotisation*taux)/100;
-            retenu_cot.html(retenu_cotisation.toFixed(2));
+            retenu_cot.html(retenu_cotisation.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+            retenu_cot.prev().val(retenu_cotisation.toFixed(2));
         })
     }
     /* calcul total cotisation */
@@ -579,34 +631,54 @@ $( function() {
         var total = 0;
         $('.retenu-cot-sal').each(function(index){
             var cotisation = $(this).html();
+            cotisation = cotisation.replaceAll(",","");
             if(cotisation=="") cotisation=0;
             total = total+ parseFloat(cotisation);
         });
-        $('#total_cotisation').html(total.toFixed(2));
+        $('#total_cotisation').html(total.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+        $('#total_cotisation').prev().val(total.toFixed(2));
+    }
+    /* calcul total cotisation */
+    function calcul_total_cotisation_patr(){
+        var total = 0;
+        $('.retenu-cot-patr').each(function(index){
+            var cotisation = $(this).html();
+            cotisation = cotisation.replaceAll(",","");
+            if(cotisation=="") cotisation=0;
+            total = total+ parseFloat(cotisation);
+        });
+        $('#total_cotisation_patr').html(total.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+        $('#total_cotisation_patr').prev().val(total.toFixed(2));
     }
     /* calcul salaire brute imposable */
     function calcul_brute_avant_cotisation(){
         var avant_cotisation = $('#sal_avant_cotisation').html();
+        avant_cotisation = avant_cotisation.replaceAll(",","");
         var total_cotisation = $('#total_cotisation').html();
+        total_cotisation = total_cotisation.replaceAll(",","");
         var total = avant_cotisation - total_cotisation;
-        $('#sal_brute_imposable').html(total.toFixed(2));
+        $('#sal_brute_imposable').html(total.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+        $('#sal_brute_imposable').prev().val(total.toFixed(2));
     }
     /* calucl tranche irsa */
     function calcul_tranche_irsa(){
-        var avant_cotisation = parseFloat($('#sal_avant_cotisation').html());
+        var brute_imposable = $('#sal_brute_imposable').html().replaceAll(",","");;
+        brute_imposable = parseFloat(brute_imposable);
         $('.min-irsa').each(function(index){
             var min_irsa = $(this).html();
             var max_irsa = $(this).parent().children('.max-irsa').html();
             var taux_irsa = $(this).parent().children('.td-taux-irsa').children().html();
-            if(avant_cotisation>=parseFloat(min_irsa) && avant_cotisation<=parseFloat(max_irsa) || avant_cotisation>parseFloat(max_irsa)){
+            if(brute_imposable>=parseFloat(min_irsa) && brute_imposable<=parseFloat(max_irsa) || brute_imposable>parseFloat(max_irsa)){
                 var moins_taux = (parseFloat(max_irsa)-parseFloat(min_irsa)) * parseFloat(taux_irsa) / 100;
                 retenu_sal_irsa = $(this).parent().children('.td-retenu-sal-irsa').children('.retenu-sal-irsa');
-                retenu_sal_irsa.html(Math.ceil(moins_taux));
+                retenu_sal_irsa.html(Math.ceil(moins_taux).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+                retenu_sal_irsa.prev().val(Math.ceil(moins_taux));
             }
-            if(avant_cotisation>=parseFloat(min_irsa) && max_irsa==' Plus '){
-                var moins_taux = (parseFloat(avant_cotisation)-parseFloat(min_irsa)) * parseFloat(taux_irsa) / 100;
+            if(brute_imposable>=parseFloat(min_irsa) && max_irsa==' Plus '){
+                var moins_taux = (parseFloat(brute_imposable)-parseFloat(min_irsa)) * parseFloat(taux_irsa) / 100;
                 retenu_sal_irsa = $(this).parent().children('.td-retenu-sal-irsa').children('.retenu-sal-irsa');
-                retenu_sal_irsa.html(Math.ceil(moins_taux));
+                retenu_sal_irsa.html(Math.ceil(moins_taux).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+                retenu_sal_irsa.prev().val(Math.ceil(moins_taux));
             }
         });
     }
@@ -614,9 +686,11 @@ $( function() {
         var total = 0;
         $('.retenu-sal-irsa').each(function(){
             var retenu_irsa = $(this).html();
+            retenu_irsa = retenu_irsa.replaceAll(",","");
             if(retenu_irsa=='') retenu_irsa=0;
             total = total+parseFloat(retenu_irsa);
         });
-        $('#total_retenu_sal_irsa').html(total.toFixed(2));
+        $('#total_retenu_sal_irsa').html(total.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+        $('#total_retenu_sal_irsa').prev().val(total.toFixed(2));
     }
 });

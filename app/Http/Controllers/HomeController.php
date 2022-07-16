@@ -29,7 +29,6 @@ class HomeController extends Controller
         $irsa = DB::table('paie_irsa')->get()->first();
         $taux_irsa = DB::table('paie_taux_irsa')->get();
         return view('fiche_de_paie.creer_fiche_de_paie', compact('desigations_sociale','numeraires','avantages','primes','irsa','taux_irsa'));
-        
     }
     
 }

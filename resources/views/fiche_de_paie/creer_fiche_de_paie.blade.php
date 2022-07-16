@@ -88,15 +88,15 @@
                         @endif
                         <td>{{$num->unite}}</td>
                         @if ($num->code=='2000' || $num->code=='3001')
-                            <td class="td-choix-num">Retenu</td>
+                            <td class="td-choix-num"><input class="form-control form-control-sm" type="hidden" step="0.01" min="0" value="Retenu<"><span class="choix-num">Retenu</span></td>
                         @else
-                            <td class="td-choix-num">Gain</td>
+                            <td class="td-choix-num"><input class="form-control form-control-sm" type="hidden" step="0.01" min="0" value="Gain"><span class="choix-num">Gain</span></td>
                         @endif
                         @if ($num->code=='1000'|| $num->code=='2000'|| $num->code=='3000'|| $num->code=='3001')
                             @if ($num->code=='1000')
                                 <td class="td-salaire-base"><input class="form-control form-control-sm input-salaire-Base" type="number" min="0" value="0" step="0.01" placeholder="Base"></td>
                             @else 
-                                <td class="td-Base-num"><input class="form-control form-control-sm input-Base" type="hidden" min="0" value="0" step="0.01" placeholder="Base"></td>
+                                <td class="td-Base-num"><input class="form-control form-control-sm input-Base" type="number" min="0" value="0" step="0.01" placeholder="Base"></td>
                             @endif
                         @else
                             <td class="td-Base-auto"></td>
@@ -201,11 +201,11 @@
                         <td></td>
                         <td></td>
                         <td></td>
+                        <td></td>
                         <td id="td_total_gain_brut"><input class="form-control form-control-sm input-hidden" type="hidden" min="0" value="0" step="0.01"><span id="total_gain_brut"></span></td>
+                        <td></td>
+                        <td></td>
                         <td id="td_total_retenu_brut"><input class="form-control form-control-sm input-hidden" type="hidden" min="0" value="0" step="0.01"><span id="total_retenu_brut"></span></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
                     </tr>
                     
                     <th id="title_cotisation" rowspan="4">COTISATION ET SOCIAL</th>
@@ -244,7 +244,7 @@
                         <td></td>
                         <td class="text-end"><input class="form-control form-control-sm input-hidden" type="hidden" min="0" value="0" step="0.01"><span id="total_cotisation"></span></td>
                         <td></td>
-                        <td></td>
+                        <td class="text-end"><input class="form-control form-control-sm input-hidden" type="hidden" min="0" value="0" step="0.01"><span id="total_cotisation_patr"></span></td>
                     </tr>
                     <th id="title_non_soumis" rowspan="2">
                         NON SOUMIS <br>
@@ -360,7 +360,7 @@
                     </tr>
                     <tr>
                         <th class="text-end fw-bold">Net à payer</th>
-                        <th class="text-end fw-bold"></th>
+                        <th class="text-end fw-bold" id="td_net_a_payer"><input class="form-control form-control-sm input-hidden" type="hidden" min="0" value="0" step="0.01"><span id="net_a_payer"></th>
                     </tr>
                 </tbody>
             </table>

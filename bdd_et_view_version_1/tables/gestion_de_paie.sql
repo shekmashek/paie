@@ -134,7 +134,7 @@ CREATE TABLE paie_detail_avantage_en_natures(
     base DECIMAL(19 , 2),
     montant_part_salarial DECIMAL(19 , 2),
     taux_part_salarial BIGINT(20),
-    gain_salarial VARCHAR(100),              /* gain ou retenu */
+    gain_salarial VARCHAR(100),              /* gain */
     FOREIGN KEY(id_avantage_en_natures) REFERENCES paie_avantage_en_natures(id) ON DELETE CASCADE,
     FOREIGN KEY(id_fiche_de_paie) REFERENCES paie_fiche_de_paie(id) ON DELETE CASCADE
 )ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
