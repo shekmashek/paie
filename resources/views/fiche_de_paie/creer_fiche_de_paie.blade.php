@@ -318,7 +318,7 @@
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td></td>
+                        <td id="total_retenu_sal_irsa"></td>
                         <td></td>
                         <td></td>
                     </tr>

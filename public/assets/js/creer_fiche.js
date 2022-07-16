@@ -256,6 +256,7 @@ $( function() {
                 calcul_total_cotisation();
                 calcul_brute_avant_cotisation();
                 calcul_tranche_irsa();
+                calcul_total_irsa();
             }
             var total_gain_numeraire = calcul_total_gain_numeraire();
             $('.soustotal_gain_num').html(total_gain_numeraire);
@@ -281,6 +282,7 @@ $( function() {
             calcul_total_cotisation();
             calcul_brute_avant_cotisation();
             calcul_tranche_irsa();
+            calcul_total_irsa();
         }
     });
 /* calcule gain et retenu autre */
@@ -304,6 +306,7 @@ $( function() {
             calcul_total_cotisation();
             calcul_brute_avant_cotisation();
             calcul_tranche_irsa();
+            calcul_total_irsa();
         }else if(choix == 'Retenu'){
             $(this).parent().parent().children('.td-Retenue-salar-num').html(gain_ou_retenu);
             var calcul_retenu_numeraire = calcul_total_retenu_numeraire();
@@ -330,6 +333,7 @@ $( function() {
             calcul_total_cotisation();
             calcul_brute_avant_cotisation();
             calcul_tranche_irsa();
+            calcul_total_irsa();
         }else if(choix == 'Retenu'){
             $(this).parent().parent().children('.td-Retenue-salar-num').html(gain_ou_retenu);
             var calcul_retenu_numeraire = calcul_total_retenu_numeraire();
@@ -358,6 +362,7 @@ $( function() {
             calcul_total_cotisation();
             calcul_brute_avant_cotisation();
             calcul_tranche_irsa();
+            calcul_total_irsa();
         }else if(choix == 'Retenu'){
             $(this).parent().parent().children('.td-Retenue-salar-num').html(gain_ou_retenu);
             var calcul_retenu_numeraire = calcul_total_retenu_numeraire();
@@ -381,6 +386,7 @@ $( function() {
         calcul_total_cotisation();
         calcul_brute_avant_cotisation();
         calcul_tranche_irsa();
+        calcul_total_irsa();
     });
     /* base */
     $('#tbody').delegate('.input-Base-pi','input', function(e){
@@ -396,6 +402,7 @@ $( function() {
         calcul_total_cotisation();
         calcul_brute_avant_cotisation();
         calcul_tranche_irsa();
+        calcul_total_irsa();
     });
 
     /* taux */
@@ -427,6 +434,7 @@ $( function() {
         calcul_retenu_cotisation_patr();
         calcul_total_cotisation();
         calcul_tranche_irsa();
+        calcul_total_irsa();
     });
     /* base */
     $('#tbody').delegate('.input-Base-avn','input', function(e){
@@ -441,6 +449,7 @@ $( function() {
         calcul_retenu_cotisation_patr();
         calcul_total_cotisation();
         calcul_tranche_irsa();
+        calcul_total_irsa();
     });
 /* calcule gain avantage en nature */
 
@@ -611,19 +620,29 @@ $( function() {
             var min_irsa = $(this).html();
             var max_irsa = $(this).parent().children('.max-irsa').html();
             var taux_irsa = $(this).parent().children('.td-taux-irsa').children().html();
-            var moins_taux = avant_cotisation * parseFloat(taux_irsa) / 100;
-            avant_cotisation = avant_cotisation - moins_taux;
             if(avant_cotisation>=parseFloat(min_irsa) && avant_cotisation<=parseFloat(max_irsa) || avant_cotisation>parseFloat(max_irsa)){
-                retenu_par_irsa = parseFloat(avant_cotisation) - moins_taux;
+                var moins_taux = (parseFloat(max_irsa)-parseFloat(min_irsa)) * parseFloat(taux_irsa) / 100;
+                /* avant_cotisation = avant_cotisation - moins_taux; */
+                /* console.log(avant_cotisation); */
                 retenu_sal_irsa = $(this).parent().children('.retenu-sal-irsa');
-                retenu_sal_irsa.html(moins_taux.toFixed(2));
+                retenu_sal_irsa.html(Math.ceil(moins_taux));
             }
             if(avant_cotisation>=parseFloat(min_irsa) && max_irsa==' Plus '){
-                retenu_par_irsa = parseFloat(avant_cotisation) - moins_taux;
+                var moins_taux = (parseFloat(avant_cotisation)-parseFloat(min_irsa)) * parseFloat(taux_irsa) / 100;
+                /* retenu_par_irsa = parseFloat(avant_cotisation) - moins_taux; */
                 retenu_sal_irsa = $(this).parent().children('.retenu-sal-irsa');
-                retenu_sal_irsa.html(moins_taux.toFixed(2));
+                retenu_sal_irsa.html(Math.ceil(moins_taux));
             }
         });
+    }
+    function calcul_total_irsa(){
+        var total = 0;
+        $('.retenu-sal-irsa').each(function(){
+            var retenu_irsa = $(this).html();
+            if(retenu_irsa=='') retenu_irsa=0;
+            total = total+parseFloat(retenu_irsa);
+        });
+        $('#total_retenu_sal_irsa').html(total.toFixed(2));
     }
     
 });
