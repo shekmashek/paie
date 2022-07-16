@@ -177,7 +177,7 @@
                         <td></td>
                         <td class="td-choix">Gain</td>
                         <td class="td-Base-avn"><input class="form-control form-control-sm input-Base-avn" type="number" min="0" value="0" step="0.01" placeholder="Base"></td>
-                        <td class="td-Taux-salar-avn text-end"><input class="form-control form-control-sm input-hidden" type="hidden" min="0" value="0" step="0.01"><span class="Taux-salar-avn"></span>{{-- <input class="form-control form-control-sm input-Taux-salar-avn" type="number" min="0" value="0" step="0.01" placeholder="Taux %"> --}}</td>
+                        <td class="td-Taux-salar-avn text-end">{{-- <input class="form-control form-control-sm input-Taux-salar-avn" type="number" min="0" value="0" step="0.01" placeholder="Taux %"> --}}</td>
                         <td class="td-Gain-salar-avn text-end"><input class="form-control form-control-sm input-hidden" type="hidden" min="0" value="0" step="0.01"><span class="Gain-salar-avn"></span>{{-- <input class="form-control form-control-sm input-Gain-salar-avn gain_avn" type="hidden" min="0" value="0" step="0.01" placeholder="Gain"> --}}</td>
                         <td></td>
                         <td></td>
@@ -202,10 +202,10 @@
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td id="td_total_gain_brut"><input class="form-control form-control-sm input-hidden" type="hidden" min="0" value="0" step="0.01"><span id="total_gain_brut"></span></td>
+                        <td id="td_total_gain_brut" class="text-end"><input class="form-control form-control-sm input-hidden" type="hidden" min="0" value="0" step="0.01"><span id="total_gain_brut"></span></td>
                         <td></td>
                         <td></td>
-                        <td id="td_total_retenu_brut"><input class="form-control form-control-sm input-hidden" type="hidden" min="0" value="0" step="0.01"><span id="total_retenu_brut"></span></td>
+                        <td id="td_total_retenu_brut" class="text-end"><input class="form-control form-control-sm input-hidden" type="hidden" min="0" value="0" step="0.01"><span id="total_retenu_brut"></span></td>
                     </tr>
                     
                     <th id="title_cotisation" rowspan="4">COTISATION ET SOCIAL</th>
@@ -297,8 +297,8 @@
                         @foreach ($taux_irsa as $pti)
                             <tr id="irsa">
                                 <td>tranche {{$i++}}</td>
-                                <td class="border-end border-top min-irsa">{{$pti->salaire_min}}</td>
-                                <td class="border-start border-top max-irsa">@if ($pti->salaire_max!=null){{$pti->salaire_max}}@else Plus @endif</td>
+                                <td class="border-end border-top min-irsa">{{number_format($pti->salaire_min,2,".",",")}}</td>
+                                <td class="border-start border-top max-irsa">@if ($pti->salaire_max!=null){{number_format($pti->salaire_max,2,".",",")}}@else Plus @endif</td>
                                 <td class="td-taux-irsa"><span>{{$pti->pourcentage}}</span>%</td>
                                 <td></td>
                                 <td class="td-retenu-sal-irsa"><input class="form-control form-control-sm input-hidden" type="hidden" min="0" value="0" step="0.01"><span class="retenu-sal-irsa"></span></td>
@@ -353,6 +353,10 @@
                     <tr>
                         <td>Avantage en nature</td>
                         <td class="text-end" id="td_avantage_nature"><input class="form-control form-control-sm input-hidden" type="hidden" min="0" value="0" step="0.01"><span id="avantage_nature"></td>
+                    </tr>
+                    <tr>
+                        <td>Part de cet Avantage en nature imposable(20%)</td>
+                        <td class="text-end" id="td_avantage_nature_impo"><input class="form-control form-control-sm input-hidden" type="hidden" min="0" value="0" step="0.01"><span id="avantage_nature_impo"></td>
                     </tr>
                     <tr>
                         <td>salaire brute imposable</td>

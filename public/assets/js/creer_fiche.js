@@ -17,7 +17,7 @@ $( function() {
         e.preventDefault();
         var content ='<tr class="brut s_num">';
         content +='<td><button type="button" class="btn btn-secondary btn-sm btn-retirer-num" style="width:20px,height:20px"><i class="bx bx-minus" ></i></button></td>';
-        content +='<td><input class="form-control form-control-sm input-code" type="text" placeholder="code"></td>';
+        content +='<td><input class="form-control form-control-sm input-code" type="text" placeholder="4xxxx"></td>';
         content +='<td><input class="form-control form-control-sm input-Designation" type="text" placeholder="Désignation"></td>';
         content +='<td class="td-Nombre-pi"><input class="form-control form-control-sm input-Nombre-pi" type="number" min="0" value="0" placeholder="Nombre"></td>';
         content +='<td class="td-unité-pi"><input class="form-control form-control-sm" type="text" placeholder="Unité"></td>';
@@ -58,7 +58,7 @@ $( function() {
         e.preventDefault();
         var content ='<tr class="brut s_avn">';
         content +='<td><button type="button" class="btn btn-secondary btn-sm btn-retirer-avn" style="width:20px,height:20px"><i class="bx bx-minus" ></i></button></td>';
-        content +='<td><input class="form-control form-control-sm input-code-avn" type="text" placeholder="code"></td>';
+        content +='<td><input class="form-control form-control-sm input-code-avn" type="text" placeholder="5xxx"></td>';
         content +='<td><input class="form-control form-control-sm input-Designation-avn" type="text" placeholder="Désignation"></td>';
         content +='<td class="td-Nombre-avn"><input class="form-control form-control-sm input-Nombre-avn" type="number" min="0" value="0" placeholder="Nombre"></td>';
         content +='<td class="td-unité-avn"><input class="form-control form-control-sm" type="text" placeholder="Unité"></td>';
@@ -259,6 +259,7 @@ $( function() {
                 calcul_brute_avant_cotisation();
                 calcul_tranche_irsa();
                 calcul_total_irsa();
+                calcul_gain_total_brut();
             }
             var total_gain_numeraire = calcul_total_gain_numeraire();
             $('.soustotal_gain_num').html(total_gain_numeraire.replace(/\B(?=(\d{3})+(?!\d))/g, ","));
@@ -289,6 +290,7 @@ $( function() {
             calcul_brute_avant_cotisation();
             calcul_tranche_irsa();
             calcul_total_irsa();
+            calcul_gain_total_brut();
         }
     });
 /* calcule gain et retenu autre */
@@ -316,6 +318,7 @@ $( function() {
             calcul_brute_avant_cotisation();
             calcul_tranche_irsa();
             calcul_total_irsa();
+            calcul_gain_total_brut();
         }else if(choix == 'Retenu'){
             $(this).parent().parent().children('.td-Retenue-salar-num').children('.Retenue-salar-num').html(gain_ou_retenu.replace(/\B(?=(\d{3})+(?!\d))/g, ","));
             $(this).parent().parent().children('.td-Gain-salar-num').children('.Gain-salar-num').html(gain_ou_retenu);
@@ -348,6 +351,7 @@ $( function() {
             calcul_total_cotisation_patr();
             calcul_tranche_irsa();
             calcul_total_irsa();
+            calcul_gain_total_brut();
         }else if(choix == 'Retenu'){
             $(this).parent().parent().children('.td-Retenue-salar-num').children('.Retenue-salar-num').html(gain_ou_retenu.replace(/\B(?=(\d{3})+(?!\d))/g, ","));
             $(this).parent().parent().children('.td-Retenue-salar-num').children('.Retenue-salar-num').prev().val(gain_ou_retenu);
@@ -382,6 +386,7 @@ $( function() {
             calcul_brute_avant_cotisation();
             calcul_tranche_irsa();
             calcul_total_irsa();
+            calcul_gain_total_brut();
         }else if(choix == 'Retenu'){
             $(this).parent().parent().children('.td-Retenue-salar-num').children('.Retenue-salar-num').html(gain_ou_retenu.replace(/\B(?=(\d{3})+(?!\d))/g, ","));
             $(this).parent().parent().children('.td-Retenue-salar-num').children('.Retenue-salar-num').prev().val(gain_ou_retenu);
@@ -410,6 +415,7 @@ $( function() {
         calcul_brute_avant_cotisation();
         calcul_tranche_irsa();
         calcul_total_irsa();
+        calcul_gain_total_brut();
     });
     /* base */
     $('#tbody').delegate('.input-Base-pi','input', function(e){
@@ -429,6 +435,7 @@ $( function() {
         calcul_brute_avant_cotisation();
         calcul_tranche_irsa();
         calcul_total_irsa();
+        calcul_gain_total_brut();
     });
 /* /calcule gain avantage en nature*/
     /* nombre */
@@ -448,6 +455,7 @@ $( function() {
         calcul_total_cotisation_patr();
         calcul_tranche_irsa();
         calcul_total_irsa();
+        calcul_gain_total_brut();
     });
     /* base */
     $('#tbody').delegate('.input-Base-avn','input', function(e){
@@ -466,6 +474,7 @@ $( function() {
         calcul_total_cotisation_patr();
         calcul_tranche_irsa();
         calcul_total_irsa();
+        calcul_gain_total_brut();
     });
 /* calcule gain avantage en nature */
 
@@ -580,24 +589,17 @@ $( function() {
         var total_avn = $('#soustotal_gain_avn').html();
         total_avn = total_avn.replaceAll(",", "");
         if(total_avn=="") total_avn=0;
-        var gain_total_brut = parseFloat(total_num) + parseFloat(total_pi) + parseFloat(total_avn);
         var brute_avant_cotisation = parseFloat(total_num) + parseFloat(total_pi);
-        /* var brute_imposable = (brute_avant_cotisation*20)/100;
-        if(brute_imposable>200000) brute_imposable=200000; */
-        $('#total_gain_brut').html(gain_total_brut.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
-        $('#total_gain_brut').prev().val(gain_total_brut);
-        $('.sal_avant_cotisation').html(brute_avant_cotisation.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
-        $('.sal_avant_cotisation').prev().val(brute_avant_cotisation);
-        $('#sal_avant_cotisation').html(brute_avant_cotisation.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
-        $('#sal_avant_cotisation').prev().val(brute_avant_cotisation);
+        var avantage_nature_impo = (total_avn*20)/100;
+        if(avantage_nature_impo>200000) avantage_nature_impo=200000;
+        $('#avantage_nature_impo').html(avantage_nature_impo.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+        $('#avantage_nature_impo').prev().val(avantage_nature_impo.toFixed(2));
+        $('.sal_avant_cotisation').html(brute_avant_cotisation.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+        $('.sal_avant_cotisation').prev().val(brute_avant_cotisation.toFixed(2));
+        $('#sal_avant_cotisation').html(brute_avant_cotisation.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+        $('#sal_avant_cotisation').prev().val(brute_avant_cotisation.toFixed(2));
         $('#avantage_nature').html(total_avn.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
         $('#avantage_nature').prev().val(total_avn.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
-    }
-    /* function total gain brut */
-    function calcul_gain_total_brut(){
-        
-        var total = parseFloat(total_num)+parseFloat(total_avn)+parseFloat(total_pi);
-        return total.toFixed(2);
     }
     /* calcul retenu cotisation salarial */
     function calcul_retenu_cotisation(){
@@ -666,13 +668,16 @@ $( function() {
         brute_imposable = parseFloat(brute_imposable);
         $('.min-irsa').each(function(index){
             var min_irsa = $(this).html();
+            min_irsa = min_irsa.replaceAll(",","");
             var max_irsa = $(this).parent().children('.max-irsa').html();
+            max_irsa = max_irsa.replaceAll(",","");
             var taux_irsa = $(this).parent().children('.td-taux-irsa').children().html();
             if(brute_imposable>=parseFloat(min_irsa) && brute_imposable<=parseFloat(max_irsa) || brute_imposable>parseFloat(max_irsa)){
                 var moins_taux = (parseFloat(max_irsa)-parseFloat(min_irsa)) * parseFloat(taux_irsa) / 100;
                 retenu_sal_irsa = $(this).parent().children('.td-retenu-sal-irsa').children('.retenu-sal-irsa');
                 retenu_sal_irsa.html(Math.ceil(moins_taux).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
                 retenu_sal_irsa.prev().val(Math.ceil(moins_taux));
+                console.log(moins_taux);
             }
             if(brute_imposable>=parseFloat(min_irsa) && max_irsa==' Plus '){
                 var moins_taux = (parseFloat(brute_imposable)-parseFloat(min_irsa)) * parseFloat(taux_irsa) / 100;
@@ -681,6 +686,16 @@ $( function() {
                 retenu_sal_irsa.prev().val(Math.ceil(moins_taux));
             }
         });
+    }
+    /* function total gain brut */
+    function calcul_gain_total_brut(){
+        var brute_imposable = $('#sal_brute_imposable').html();
+        var avantage_nature_impo = $('#avantage_nature_impo').html();
+        brute_imposable = brute_imposable.replaceAll(",","");
+        avantage_nature_impo = avantage_nature_impo.replaceAll(",","");
+        var salaire_brute = parseFloat(avantage_nature_impo)+parseFloat(brute_imposable);
+        $('#total_gain_brut').html(salaire_brute.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+        $('#total_gain_brut').prev().val(salaire_brute);
     }
     function calcul_total_irsa(){
         var total = 0;
@@ -693,4 +708,5 @@ $( function() {
         $('#total_retenu_sal_irsa').html(total.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ","));
         $('#total_retenu_sal_irsa').prev().val(total.toFixed(2));
     }
+
 });
