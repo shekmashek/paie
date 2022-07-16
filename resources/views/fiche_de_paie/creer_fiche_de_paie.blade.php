@@ -66,7 +66,7 @@
                 </thead>
                 <tbody id="tbody">
                     <tr>
-                        <td colspan="14">Taux Horaire: <span id="taux_horaire"></span></td>
+                        <td colspan="14">Taux Horaire: <input class="form-control form-control-sm input-th-hidden" name='taux_horaire' type="hidden" min="0" value="0" step="0.01"><span id="taux_horaire"></span></td>
                     </tr>
                     <th id="title_brut" rowspan="24">SALAIRE</th>
                     <th id="title_num" rowspan="13">Salaire Numeraire</th>
@@ -78,7 +78,7 @@
                             <td></td>
                         @endif
                         <td><input class="form-control form-control-sm input-code" value="{{$num->code}}" type="hidden" placeholder="code">{{$num->code}}</td>
-                        <td><input class="form-control form-control-sm input-Designation" value="{{$num->designation}}" type="hidden" placeholder="Désignation">{{$num->designation}}</td>
+                        <td>{{$num->designation}}</td>
                         @if ($num->code=='1000')
                             <td></td>
                         @elseif ($num->code=='2000'|| $num->code=='3000'|| $num->code=='3001')
@@ -96,7 +96,7 @@
                             @if ($num->code=='1000')
                                 <td class="td-salaire-base"><input class="form-control form-control-sm input-salaire-Base" type="number" min="0" value="0" step="0.01" placeholder="Base"></td>
                             @else 
-                                <td class="td-Base-num"><input class="form-control form-control-sm input-Base" type="number" min="0" value="0" step="0.01" placeholder="Base"></td>
+                                <td class="td-Base-num"><input class="form-control form-control-sm input-Base" type="hidden" min="0" value="0" step="0.01" placeholder="Base"></td>
                             @endif
                         @else
                             <td class="td-Base-auto"></td>
@@ -113,14 +113,14 @@
                             <td></td>
                         @endif
                         @if ($num->code=='1000' || $num->code=='3000')
-                            <td class="td-Gain-salar-num text-end">{{-- <input class="form-control form-control-sm input-Gain-salar gain_num" type="number" value="0" min="0" value="0" step="0.01" placeholder="Gain"> --}}</td>
+                            <td class="td-Gain-salar-num text-end"><input class="form-control form-control-sm input-hidden" type="hidden" min="0" value="0" step="0.01"><span class="Gain-salar-num"></span>{{-- <input class="form-control form-control-sm input-Gain-salar gain_num" type="number" value="0" min="0" value="0" step="0.01" placeholder="Gain"> --}}</td>
                         @elseif ($num->code!='2000' && $num->code!='3001')
-                            <td class="td-Gain-h text-end"></td>
+                            <td class="td-Gain-h text-end"><input class="form-control form-control-sm input-hidden" type="hidden" min="0" value="0" step="0.01"><span class="Gain-h"></span></td>
                         @else
                             <td></td>
                         @endif
                         @if ($num->code=='2000'|| $num->code=='3001')
-                            <td class="td-Retenue-salar-num text-end">{{-- <input class="form-control form-control-sm input-Retenue-salar retenu_num" type="number" min="0" value="0" step="0.01" placeholder="Retenue"> --}}</td>
+                            <td class="td-Retenue-salar-num text-end"><input class="form-control form-control-sm input-hidden" type="hidden" min="0" value="0" step="0.01"><span class="Retenue-salar-num"></span>{{-- <input class="form-control form-control-sm input-Retenue-salar retenu_num" type="number" min="0" value="0" step="0.01" placeholder="Retenue"> --}}</td>
                         @else
                             <td></td>
                         @endif
@@ -130,8 +130,8 @@
                     @endforeach
                     <tr class="table-light">
                         <td colspan="9" class="text-end">Sous total Numeraires</td>
-                        <td class="text-end soustotal_gain_num"></td>
-                        <td id="soustotal_retenu_num" class="text-end"></td>
+                        <td class="text-end td_soustotal_gain_num"><input class="form-control form-control-sm input-hidden" type="hidden" min="0" value="0" step="0.01"><span class="soustotal_gain_num"></span></td>
+                        <td id="td_soustotal_retenu_num" class="text-end"><input class="form-control form-control-sm input-hidden" type="hidden" min="0" value="0" step="0.01"><span id="soustotal_retenu_num"></span></td>
                         <td></td>
                         <td></td>
                     </tr>
@@ -148,10 +148,10 @@
                         <td><input class="form-control form-control-sm input-Designation" type="hidden" placeholder="Désignation">{{$pr->designation}}</td>
                         <td class="td-Nombre-pi"><input class="form-control form-control-sm input-Nombre-pi" type="number" min="0" value="0" placeholder="Nombre"></td>
                         <td></td>
-                        <td class="td-choix-pi">Gain</td>
+                        <td class="td-choix-pi"><input class="form-control form-control-sm input-choix-pi" type="hidden" min="0" value="0" step="0.01" placeholder="Base"><span class="choix-pi">Gain</span></td>
                         <td class="td-Base-pi"><input class="form-control form-control-sm input-Base-pi" type="number" min="0" value="0" step="0.01" placeholder="Base"></td>
-                        <td class="td-Taux-salar-pi">{{-- <input class="form-control form-control-sm input-Taux-salar" type="hidden" min="0" value="0" step="0.01" placeholder="Taux %"> --}}</td>
-                        <td class="td-Gain-salar-pi text-end">{{-- <input class="form-control form-control-sm input-Gain-salar " type="hidden" min="0" value="0" step="0.01" placeholder="Gain"> --}}</td>
+                        <td class="td-Taux-salar-pi"><input class="form-control form-control-sm input-th-hidden" name='taux_horaire' type="number" min="0" value="0" step="0.01">{{-- <input class="form-control form-control-sm input-Taux-salar" type="hidden" min="0" value="0" step="0.01" placeholder="Taux %"> --}}</td>
+                        <td class="td-Gain-salar-pi text-end"><input class="form-control form-control-sm input-th-hidden" name='taux_horaire' type="hidden" min="0" value="0" step="0.01"><span class="Gain-salar-pi"></span>{{-- <input class="form-control form-control-sm input-Gain-salar " type="hidden" min="0" value="0" step="0.01" placeholder="Gain"> --}}</td>
                         <td></td>
                         <td></td>
                         <td></td>
@@ -159,7 +159,7 @@
                     @endforeach
                     <tr id="sous_t_pi" class="table-light">
                         <td colspan="9" class="text-end">Sous total Primes et Indemnités</td>
-                        <td class="text-end soustotal_gain_pi"></td>
+                        <td class="text-end td_soustotal_gain_pi"><input class="form-control form-control-sm input-th-hidden" name='taux_horaire' type="hidden" min="0" value="0" step="0.01"><span class="soustotal_gain_pi"></span></td>
                         <td></td>
                         <td></td>
                         <td></td>
@@ -177,8 +177,8 @@
                         <td></td>
                         <td class="td-choix">Gain</td>
                         <td class="td-Base-avn"><input class="form-control form-control-sm input-Base-avn" type="number" min="0" value="0" step="0.01" placeholder="Base"></td>
-                        <td class="td-Taux-salar-avn text-end">{{-- <input class="form-control form-control-sm input-Taux-salar-avn" type="number" min="0" value="0" step="0.01" placeholder="Taux %"> --}}</td>
-                        <td class="td-Gain-salar-avn text-end">{{-- <input class="form-control form-control-sm input-Gain-salar-avn gain_avn" type="hidden" min="0" value="0" step="0.01" placeholder="Gain"> --}}</td>
+                        <td class="td-Taux-salar-avn text-end"><input class="form-control form-control-sm input-hidden" type="hidden" min="0" value="0" step="0.01"><span class="Taux-salar-avn"></span>{{-- <input class="form-control form-control-sm input-Taux-salar-avn" type="number" min="0" value="0" step="0.01" placeholder="Taux %"> --}}</td>
+                        <td class="td-Gain-salar-avn text-end"><input class="form-control form-control-sm input-hidden" type="hidden" min="0" value="0" step="0.01"><span class="Gain-salar-avn"></span>{{-- <input class="form-control form-control-sm input-Gain-salar-avn gain_avn" type="hidden" min="0" value="0" step="0.01" placeholder="Gain"> --}}</td>
                         <td></td>
                         <td></td>
                         <td></td>
@@ -186,7 +186,7 @@
                     @endforeach
                     <tr id="sous_t_avn" class="table-light">
                         <td colspan="9" class="text-end">Sous total Avantage en nature</td>
-                        <td class="text-end" id="soustotal_gain_avn"></td>
+                        <td class="text-end" id="td_soustotal_gain_avn"><input class="form-control form-control-sm input-hidden" type="hidden" min="0" value="0" step="0.01"><span id="soustotal_gain_avn"></span></td>
                         <td></td>
                         <td></td>
                         <td></td>
@@ -201,8 +201,8 @@
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td id="total_gain_brut"></td>
-                        <td id="total_retenu_brut"></td>
+                        <td id="td_total_gain_brut"><input class="form-control form-control-sm input-hidden" type="hidden" min="0" value="0" step="0.01"><span id="total_gain_brut"></span></td>
+                        <td id="td_total_retenu_brut"><input class="form-control form-control-sm input-hidden" type="hidden" min="0" value="0" step="0.01"><span id="total_retenu_brut"></span></td>
                         <td></td>
                         <td></td>
                         <td></td>
@@ -218,16 +218,16 @@
                             <td></td>
                             <td></td>
                             <td class="sal_avant_cotisation"></td>
+                            <td></td>
                             <td>@if ($ds->taux_part_salarial>0)
                                 <span  class="taux-cot-sal">{{$ds->taux_part_salarial}}</span><span>%</span>
                             @endif</td>
                             <td></td>
-                            <td></td>
-                            <td class="retenu-cot-sal text-end"></td>
+                            <td class="td-retenu-cot-sal text-end"><input class="form-control form-control-sm input-hidden" type="hidden" min="0" value="0" step="0.01"><span class="retenu-cot-sal"></span></td>
                             <td>@if ($ds->taux_part_patronal>0)
                                 <span  class="taux-cot-patr">{{$ds->taux_part_patronal}}</span><span>%</span>
                             @endif</td>
-                            <td class="retenu-cot-patr text-end"></td>
+                            <td class="td-retenu-cot-patr text-end"><input class="form-control form-control-sm input-hidden" type="hidden" min="0" value="0" step="0.01"><span class="retenu-cot-patr"></span></td>
                         </tr>
                     @endforeach
                     <tr class="table-secondary">
@@ -242,7 +242,7 @@
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td class="text-end" id="total_cotisation"></td>
+                        <td class="text-end"><input class="form-control form-control-sm input-hidden" type="hidden" min="0" value="0" step="0.01"><span id="total_cotisation"></span></td>
                         <td></td>
                         <td></td>
                     </tr>
@@ -266,8 +266,8 @@
                         </td>
                         <td class="td-Base"><input class="form-control form-control-sm input-Base" type="number" min="0" value="0" step="0.01" placeholder="Base"></td>
                         <td class="td-Taux-salar"><input class="form-control form-control-sm input-Taux-salar" type="number" min="0" value="0" step="0.01" placeholder="Taux %"></td>
-                        <td class="td-Gain-salar text-end"><input class="form-control form-control-sm input-Gain-salar" type="number" value="0" min="0" value="0" step="0.01" placeholder="Gain"></td>
-                        <td class="td-Retenue-salar text-end"><input class="form-control form-control-sm input-Retenue-salar" type="number" min="0" value="0" step="0.01" placeholder="Retenue"></td>
+                        <td class="td-Gain-salar text-end"><input class="form-control form-control-sm input-Gain-salar" type="hidden" value="0" min="0" value="0" step="0.01" placeholder="Gain"><span class="Gain-salar"></span></td>
+                        <td class="td-Retenue-salar text-end"><input class="form-control form-control-sm input-Retenue-salar" type="hidden" min="0" value="0" step="0.01" placeholder="Retenue"><span class="Retenue-salar"></span></td>
                         <td></td>
                         <td></td>
                     </tr>
@@ -301,9 +301,9 @@
                                 <td class="border-start border-top max-irsa">@if ($pti->salaire_max!=null){{$pti->salaire_max}}@else Plus @endif</td>
                                 <td class="td-taux-irsa"><span>{{$pti->pourcentage}}</span>%</td>
                                 <td></td>
-                                <td class="retenu-sal-irsa"></td>
+                                <td class="td-retenu-sal-irsa"><input class="form-control form-control-sm input-hidden" type="hidden" min="0" value="0" step="0.01"><span class="retenu-sal-irsa"></span></td>
                                 <td></td>
-                                <td class="retenu-patr-irsa"></td>
+                                <td class="td-retenu-patr-irsa"><input class="form-control form-control-sm input-hidden" type="hidden" min="0" value="0" step="0.01"><span class="retenu-patr-irsa"></span></td>
                             </tr>
                         @endforeach
                     <tr id="total_cotisation" class="table-secondary">
@@ -318,7 +318,7 @@
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td id="total_retenu_sal_irsa"></td>
+                        <td id="td_total_retenu_sal_irsa"><input class="form-control form-control-sm input-hidden" type="hidden" min="0" value="0" step="0.01"><span id="total_retenu_sal_irsa"></span></td>
                         <td></td>
                         <td></td>
                     </tr>
@@ -348,15 +348,15 @@
                 <tbody>
                     <tr>
                         <td>Salaire brut avant cotisation</td>
-                        <td class="text-end col_min" id="sal_avant_cotisation"></td>
+                        <td class="text-end col_min" id="td_sal_avant_cotisation"><input class="form-control form-control-sm input-hidden" type="hidden" min="0" value="0" step="0.01"><span id="sal_avant_cotisation"></td>
                     </tr>
                     <tr>
                         <td>Avantage en nature</td>
-                        <td class="text-end" id="avantage_nature"></td>
+                        <td class="text-end" id="td_avantage_nature"><input class="form-control form-control-sm input-hidden" type="hidden" min="0" value="0" step="0.01"><span id="avantage_nature"></td>
                     </tr>
                     <tr>
                         <td>salaire brute imposable</td>
-                        <td class="text-end" id="sal_brute_imposable"></td>
+                        <td class="text-end" id="td_sal_brute_imposable"><input class="form-control form-control-sm input-hidden" type="hidden" min="0" value="0" step="0.01"><span id="sal_brute_imposable"></td>
                     </tr>
                     <tr>
                         <th class="text-end fw-bold">Net à payer</th>

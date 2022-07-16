@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use App\Models\FonctionGenerique;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 
@@ -19,7 +18,7 @@ class HomeController extends Controller
             /* if (Auth::user()->exists == false) return redirect()->route('sign-in'); */
             /* return $next($request); */
         /* }); */
-        $this->fonct = new FonctionGenerique();
+        /* $this->fonct = new FonctionGenerique(); */
     }
     public function index(Request $request)
     {
