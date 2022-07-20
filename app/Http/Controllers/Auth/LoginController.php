@@ -5,7 +5,10 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+<<<<<<< HEAD
 use Illuminate\Http\Request;
+=======
+>>>>>>> f42e267055e93b2d6e85ef18981619331b6ee6a1
 
 class LoginController extends Controller
 {
@@ -20,11 +23,16 @@ class LoginController extends Controller
     |
     */
 
+<<<<<<< HEAD
     // use AuthenticatesUsers;
     //redirection après deconnexion
     use AuthenticatesUsers {
         logout as performLogout;
     }
+=======
+    use AuthenticatesUsers;
+
+>>>>>>> f42e267055e93b2d6e85ef18981619331b6ee6a1
     /**
      * Where to redirect users after login.
      *
@@ -41,6 +49,7 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+<<<<<<< HEAD
 
     protected function validateLogin(Request $request)
     {
@@ -60,4 +69,6 @@ class LoginController extends Controller
         $this->performLogout($request);
         return redirect()->route('sign-in');
     }
+=======
+>>>>>>> f42e267055e93b2d6e85ef18981619331b6ee6a1
 }

@@ -13,21 +13,14 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-        integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/fontawesome.min.css"
-        integrity="sha512-8Vtie9oRR62i7vkmVUISvuwOeipGv8Jd+Sur/ORKDD5JiLgTGeBSkI3ISOhc730VGvA5VVQPwKIKlmi+zMZ71w=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="{{asset('assets/css/styleGeneral.css')}}">
     <link rel="shortcut icon" href="{{  asset('maquette/logo_fmg7635dc.png') }}" type="image/x-icon">
     <link rel="stylesheet" href="{{asset('assets/css/configAll.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/mahafaly.css')}}">
-
-    {{-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> --}}
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     <style>
         .modal-backdrop{
             z-index: 1 !important;
@@ -55,6 +48,7 @@
     @endif
 
     <div class="sidebar active">
+<<<<<<< HEAD
         {{-- <div class="logo_content">
             <div class="logo">
                 <span><img src="{{asset('img/images/logo_fmg54Ko.png')}}" alt="" class="img-fluid"></span>
@@ -73,6 +67,9 @@
 
 
 
+=======
+        <ul class="nav nav_list mb-5" id="menu">
+>>>>>>> f42e267055e93b2d6e85ef18981619331b6ee6a1
             @canany(['isReferent','isReferentSimple'])
             <li>
                 <a href="{{ route('afficher_iframe_entreprise') }}" class="d-flex BI nav_linke">
@@ -98,6 +95,7 @@
                 </a>
             </li>
             @endcanany
+<<<<<<< HEAD
 
 
 
@@ -140,6 +138,9 @@
 
 
             </a> --}}
+=======
+            @canany(['isSuperAdmin'])
+>>>>>>> f42e267055e93b2d6e85ef18981619331b6ee6a1
             <li>
                 <a href="{{route('categorie')}}" class="d-flex categorie nav_linke">
                     <i class='bx bxs-doughnut-chart'></i>
@@ -197,6 +198,7 @@
             </li>
             @endcanany
             {{-- projet de formation --}}
+<<<<<<< HEAD
 
             {{-- @canany(['isCFP','isFormateur'])
             <li>
@@ -221,6 +223,9 @@
             </li>
             @endcanany --}}
             @canany(['isReferent','isReferentSimple','isManager','isChefDeService'])
+=======
+            @canany(['isReferent','isReferentSimple','isManager'])
+>>>>>>> f42e267055e93b2d6e85ef18981619331b6ee6a1
             <li>
                 <a href="{{route('liste_projet')}}" class="d-flex projet nav_linke">
                     <i class='bx bx-library'></i>
@@ -228,7 +233,11 @@
                 </a>
             </li>
             @endcanany
+<<<<<<< HEAD
             @canany(['isReferent','isReferentSimple','isManager','isStagiaire','isChefDeService'])
+=======
+            @canany(['isReferent','isReferentSimple','isManager','isStagiaire'])
+>>>>>>> f42e267055e93b2d6e85ef18981619331b6ee6a1
             <li>
                 <a href="{{route('formations')}}" class="d-flex nav_linke">
                     <i class='bx bxl-netlify'></i>
@@ -255,6 +264,7 @@
 
             </li>
             @endcanany
+<<<<<<< HEAD
             @canany(['isCFP','isReferent','isManager','isChefDeService'])
             {{-- <li>
                 <a href="{{route('appel_offre.index')}}" class="d-flex nav_linke">
@@ -284,6 +294,10 @@
             @endcanany --}}
             {{-- formateurs --}}
 
+=======
+            @canany(['isCFP','isReferent','isManager'])
+            @endcanany
+>>>>>>> f42e267055e93b2d6e85ef18981619331b6ee6a1
             @canany(['isCFP'])
             <li>
                 <a href="{{route('liste_formateur')}}" class="d-flex formateurs nav_linke">
@@ -292,6 +306,7 @@
                 </a>
 
             </li>
+<<<<<<< HEAD
             {{-- <li>
                 <a href="{{route('nouveau_formateur')}}" class="d-flex nav_linke">
                     <i class='bx bxs-bank'></i>
@@ -342,6 +357,10 @@
                 </a>
 
             </li> --}}
+=======
+            @endcanany
+            @canany(['isReferent'])
+>>>>>>> f42e267055e93b2d6e85ef18981619331b6ee6a1
             @endcanany
             {{-- Referent --}}
             @canany(['isAdmin','isSuperAdmin'])
@@ -352,6 +371,7 @@
                 </a>
 
             </li>
+<<<<<<< HEAD
             {{-- <li>
                 <a href="{{route('liste_responsable')}}" class="d-flex nav_linke">
                     <i class='bx bxs-user-rectangle'></i>
@@ -427,6 +447,9 @@
 
             </li>
             @endcanany --}}
+=======
+            @endcanany
+>>>>>>> f42e267055e93b2d6e85ef18981619331b6ee6a1
             @canany(['isCFP','isReferent','isReferentSimple'])
             <li>
                 <a href="{{route('liste_facture')}}" class="d-flex facture nav_linke">
@@ -435,6 +458,7 @@
                 </a>
 
             </li>
+<<<<<<< HEAD
             {{-- integrer dans la page
             <li>
                 <a href="{{route('liste_facture')}}" class="d-flex nav_linke">
@@ -475,10 +499,27 @@
                 <a @canany(['isStagiaire']) href="{{route('planFormation.index')}}" @endcanany
                     href="{{route('liste_demande_stagiaire')}}" class="d-flex nav_linke">
                     <i class='bx bx-bar-chart-square'></i>
+=======
+
+            @endcanany
+            {{-- competence --}}
+            @canany(['isReferent','isManager'])
+            @canany(['isReferent'])
+            @endcanany
+            @endcanany
+
+            {{-- plan de formation --}}
+            @canany(['isStagiaire','isManager','isReferent','isReferentSimple'])
+            <li>
+                <a @canany(['isStagiaire']) href="{{route('planFormation.index')}}" @endcanany
+                    href="{{route('liste_demande_stagiaire')}}" class="d-flex nav_linke">
+                    <i class="fa-solid fa-earth-asia"></i>
+>>>>>>> f42e267055e93b2d6e85ef18981619331b6ee6a1
                     <span class="links_name">Plan</span>
                 </a>
             </li>
             @endcanany
+<<<<<<< HEAD
             {{-- integrer dans la page
             <li>
                 <a href="{{route('listePlanFormation')}}" class="d-flex nav_linke">
@@ -488,6 +529,8 @@
             </li> --}}
             {{-- @endcanany
             {{-- abonemment --}}
+=======
+>>>>>>> f42e267055e93b2d6e85ef18981619331b6ee6a1
             @canany(['isSuperAdmin','isAdmin'])
             <li>
                 <a href="{{route('listeAbonne')}}" class="d-flex abonnees nav_linke">
@@ -496,6 +539,7 @@
                 </a>
 
             </li>
+<<<<<<< HEAD
 
             {{-- integrer dans la page
             <li>
@@ -515,6 +559,10 @@
             </li>
             @endcan --}}
             {{-- @can(['isCFP'])
+=======
+            @endcanany
+            @can(['isCFP'])
+>>>>>>> f42e267055e93b2d6e85ef18981619331b6ee6a1
             <li>
                 <a href="{{route('liste_demande_devis')}}" class="d-flex demandedevis nav_linke">
                     <i class='bx bxs-notepad'></i>
@@ -522,8 +570,13 @@
                 </a>
             </li>
 
+<<<<<<< HEAD
             @endcan --}}
             @canany(['isFormateur','isFormateurInterne'])
+=======
+            @endcan
+            @can('isFormateur')
+>>>>>>> f42e267055e93b2d6e85ef18981619331b6ee6a1
             <li>
                 <a href="{{route('profilProf',Auth::user()->id)}}" class="d-flex moncv nav_linke">
                     <i class='bx bxs-notepad'></i>
@@ -531,6 +584,7 @@
                 </a>
             </li>
 
+<<<<<<< HEAD
             @endcanany
 
             {{-- <li>
@@ -570,11 +624,17 @@
             </div>
         </div> --}}
 
+=======
+            @endcan
+        </ul>
+
+>>>>>>> f42e267055e93b2d6e85ef18981619331b6ee6a1
     </div>
 
     <div class="home_content">
         <div class="container-fluid p-0 height-100 bg-light" id="content">
             <header class="header row align-items-center g-0" id="header">
+<<<<<<< HEAD
                 {{-- <div class="col-1 menu_hamburger">
                     <i class="bx bx-menu" id="btn_menu" role="button" onclick="clickSidebar();"></i>
                 </div> --}}
@@ -596,6 +656,13 @@
                 </div>
                 <div class="col-4 align-items-center justify-content-start d-flex flex-row ">
                     @canany(['isReferent','isStagiaire','isManager','isChefDeService','isReferentSimple'])
+=======
+                <div class="col-3 d-flex flex-row padding_logo">
+                    <span><img src="{{asset('img/logos_all/iconPaie.webp')}}" alt="" class="img-fluid menu_logo me-3"></span>@yield('title')
+                </div>
+                <div class="col-4 align-items-center justify-content-start d-flex flex-row ">
+                    @canany(['isReferent','isStagiaire','isManager','isReferentSimple'])
+>>>>>>> f42e267055e93b2d6e85ef18981619331b6ee6a1
                     <div class="row">
                         <div class="searchBoxMod d-flex flex-row py-2">
 
@@ -624,7 +691,11 @@
 
                     <div class="row">
                         <div class="searchBoxMod d-flex flex-row py-2">
+<<<<<<< HEAD
                             @canany(['isReferent','isManager','isChefDeService','isReferentSimple','isStagiaire'])
+=======
+                            @canany(['isReferent','isManager','isReferentSimple','isStagiaire'])
+>>>>>>> f42e267055e93b2d6e85ef18981619331b6ee6a1
                             <div class="btn_racourcis me-4">
                                 <a href="{{route('calendrier_formation')}}" class="text-center agenda" role="button"><span
                                         class="d-flex flex-column text-center"><i
@@ -632,13 +703,18 @@
                                             class="text_racourcis">Agenda</span></span></a>
                             </div>
                             @endcanany
+<<<<<<< HEAD
                             @canany(['isReferent','isManager','isChefDeService','isReferentSimple'])
+=======
+                            @canany(['isReferent','isManager','isReferentSimple'])
+>>>>>>> f42e267055e93b2d6e85ef18981619331b6ee6a1
                                 <div class="btn_racourcis me-4">
                                     <a href="{{route('employes.liste')}}" class="employe text-center" role="button"><span
                                             class="d-flex flex-column"><i class='bx bxs-user-detail mb-2 mt-1'></i><span
                                                 class="text_racourcis">employés</span></span></a>
                                 </div class="btn_racourcis">
                             @endcanany
+<<<<<<< HEAD
                             {{-- <div class="btn_racourcis me-4">
                                 <a href="{{route('employes')}}" class="text-center" role="button"><span
                                         class="d-flex flex-column"><i class='bx bxs-group mb-2 mt-1'></i><span
@@ -660,6 +736,10 @@
                         </div>
                     </div>
                     @endcanany --}}
+=======
+                        </div>
+                    </div>
+>>>>>>> f42e267055e93b2d6e85ef18981619331b6ee6a1
                     @canany('isCFP')
                     <div class="row">
                         <div class="searchBoxMod d-flex flex-row py-2">
@@ -691,6 +771,7 @@
                         </div>
                     </div>
                     @endcanany
+<<<<<<< HEAD
                     {{-- @canany('isStagiaire')
                     <div class="row">
                         <div class="searchBoxMod d-flex flex-row py-2">
@@ -708,6 +789,9 @@
                     </div>
                     @endcanany --}}
                     @canany(['isFormateur','isFormateurInterne'])
+=======
+                    @canany('isFormateur')
+>>>>>>> f42e267055e93b2d6e85ef18981619331b6ee6a1
                     <div class="row">
                         <div class="searchBoxMod d-flex flex-row py-2">
                             <div class="d-flex flex-row">
@@ -729,6 +813,7 @@
                 </div>
                 <div class="col-5 header-right align-items-center d-flex flex-row">
                     <div class="col-4 d-flex flex-row justify-content-center apprendCreer pb-3">
+<<<<<<< HEAD
                         {{-- @can('isStagiaire')
                         <div class="col-5 header-right">
                             <div class="col-12 d-flex flex-row justify-content-center apprendCreer apprendreBox">
@@ -754,16 +839,22 @@
                             </div>
                         </div>
                         @endcan --}}
+=======
+>>>>>>> f42e267055e93b2d6e85ef18981619331b6ee6a1
                         @canany(['isReferent','isReferentSimple'])
                         <div class="col-5 header-right d-flex flex-row">
                             <div class="col-12 d-flex flex-row justify-content-center apprendCreer apprendreBox">
                                 <div class="btn_racourcis" id="text_apprendre">
+<<<<<<< HEAD
                                     {{-- <span class="text_apprendre" role="button"><i
                                             class="fa-solid fa-book-open-reader icons_creer"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Apprendre</span> --}}
+=======
+>>>>>>> f42e267055e93b2d6e85ef18981619331b6ee6a1
                                     <a href="#" class="text-center " role="button"><span class="d-flex flex-column"><i class='fa-solid fa-book-open-reader mb-2 mt-1'></i>
                                         <span class="text_racourcis">Apprendre</span></span>
                                     </a>
                                 </div>
+<<<<<<< HEAD
                                 {{-- <div class="btn_racourcis dropdown prevent_affichage .navigation_module" >
                                     <a href="#" class="dropdown-toggle" role="button" id="notification" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">
                                         <span class=""><i class='bx bxs-bell-ring bx-tada-hover mb-2 mt-1'></i>
@@ -777,6 +868,9 @@
                                 <div class="btn_racourcis dropdown prevent_affichage2 .navigation_module" >
                                     {{-- <span class="text_apprendre" role="button"><i
                                             class="fa-solid fa-book-open-reader icons_creer"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Apprendre</span> --}}
+=======
+                                <div class="btn_racourcis dropdown prevent_affichage2 .navigation_module" >
+>>>>>>> f42e267055e93b2d6e85ef18981619331b6ee6a1
                                     <a href="#" class="dropdown-toggle" role="button" id="invitation_cfp" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">
                                         <span class=""><i class='bx bxs-message-add bx-burst-hover mb-2 mt-1'></i>
                                         <span class="text_racourcis"></span></span>
@@ -825,13 +919,17 @@
                         <div class="col-5 header-right">
                             <div class="col-12 d-flex flex-row justify-content-end apprendCreer apprendreBox">
                                 <div class="btn_racourcis" id="text_apprendre">
+<<<<<<< HEAD
                                     {{-- <span class="text_apprendre" role="button"><i
                                             class="fa-solid fa-book-open-reader icons_creer"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Apprendre</span> --}}
+=======
+>>>>>>> f42e267055e93b2d6e85ef18981619331b6ee6a1
                                     <a href="#" class="text-center " role="button"><span class="d-flex flex-column"><i class='fa-solid fa-book-open-reader mb-2 mt-1'></i>
                                         <span class="text_racourcis">Apprendre</span></span>
                                     </a>
                                 </div>
                                 <div class="btn_racourcis dropdown prevent_affichage .navigation_module" >
+<<<<<<< HEAD
                                     {{-- <span class="text_apprendre" role="button"><i
                                             class="fa-solid fa-book-open-reader icons_creer"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Apprendre</span> --}}
                                     {{-- <a href="#" class="dropdown-toggle" role="button" id="notification" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">
@@ -846,6 +944,10 @@
                                 <div class="btn_racourcis dropdown prevent_affichage2 .navigation_module" >
                                     {{-- <span class="text_apprendre" role="button"><i
                                             class="fa-solid fa-book-open-reader icons_creer"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Apprendre</span> --}}
+=======
+                                </div>
+                                <div class="btn_racourcis dropdown prevent_affichage2 .navigation_module" >
+>>>>>>> f42e267055e93b2d6e85ef18981619331b6ee6a1
                                     <a href="#" class="dropdown-toggle" role="button" id="invitation_cfp" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">
                                         <span class=""><i class='bx bxs-message-add bx-burst-hover mb-2 mt-1'></i>
                                         <span class="text_racourcis"></span></span>
@@ -907,7 +1009,11 @@
                                         </a></li>
                                     </ul>
                                 @endcan
+<<<<<<< HEAD
                                 @canany(['isManager','isChefDeService'])
+=======
+                                @can('isManager')
+>>>>>>> f42e267055e93b2d6e85ef18981619331b6ee6a1
                                     <a class="dropdown-toggle p-1" id="dropdownMenuCreer" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true"><i class='bx bx-plus-medical icon_creer_admin'></i></a>
                                     <ul class="dropdown-menu mt-3" aria-labelledby="dropdownMenuCreer">
                                         <li><a class="dropdown-item" href="{{route('planFormation.index')}}"> <i
@@ -920,7 +1026,11 @@
                                                     class="fas fa-money-check icon_plus"></i>&nbsp;Budgetisation</a></li>
 
                                     </ul>
+<<<<<<< HEAD
                                 @endcanany
+=======
+                                @endcan
+>>>>>>> f42e267055e93b2d6e85ef18981619331b6ee6a1
                                 @canany(['isReferent','isReferentSimple'])
                                     <a class="dropdown-toggle p-1" id="dropdownMenuCreer" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true"><i class='bx bx-plus-medical icon_creer_admin'></i></a>
                                     <ul class="dropdown-menu mt-3" aria-labelledby="dropdownMenuCreer">
@@ -972,11 +1082,14 @@
                                                 <i class="bx bx-customize icon_plus"></i>&nbsp; Nouveau Module
                                             </a>
                                         </li>
+<<<<<<< HEAD
                                         {{-- <li id="formateurs">
                                             <a class="dropdown-item" href="{{route('nouveau_formateur')}}">
                                                 <i class="bx bxs-user-rectangle icon_plus "></i>&nbsp; Nouveau Formateur
                                             </a>
                                         </li> --}}
+=======
+>>>>>>> f42e267055e93b2d6e85ef18981619331b6ee6a1
                                         @can('isPremium')
                                             <li id="projet">
                                                 <a class="dropdown-item"
@@ -1025,7 +1138,11 @@
                                             <div class="row">
                                                 <div class="col-4 px-0 logo_suite">
                                                     @can('isManagerPrincipale')
+<<<<<<< HEAD
                                                         <a href="{{route('profil_manager')}}" class="text-center justify-content-center d-flex flex-column"><i class='bx bxs-user-circle icone_compte '></i><span class="mt-1">compte</span></a>
+=======
+                                                        <a href="{{route('affProfilChefDepartement')}}" class="text-center justify-content-center d-flex flex-column"><i class='bx bxs-user-circle icone_compte '></i><span class="mt-1">compte</span></a>
+>>>>>>> f42e267055e93b2d6e85ef18981619331b6ee6a1
                                                     @endcan
                                                     @can('isFormateurPrincipale')
                                                         <a href="{{route('profile_formateur')}}" class="text-center justify-content-center d-flex flex-column"><i class='bx bxs-user-circle icone_compte '></i><span class="mt-1">compte</span></a>
@@ -1044,7 +1161,11 @@
                                                     <a href="#" class="text-center justify-content-center d-flex flex-column"><img src="{{asset('img/logos_all/iconFormation.webp')}}" alt="logo formation" width="35px" height="35px" class="img-responsive mb-2"><span>formation</span></a>
                                                 </div>
                                                 <div class="col-4 px-0 logo_suite">
+<<<<<<< HEAD
                                                     <a href="#" class="text-center justify-content-center d-flex flex-column"><img src="{{asset('img/logos_all/iconPaie.webp')}}" alt="logo formation" width="35px" height="35px" class="img-responsive mb-2"><span>paie</span></a>
+=======
+                                                    <a href="" class="text-center justify-content-center d-flex flex-column"><img src="{{asset('img/logos_all/iconPaie.webp')}}" alt="logo formation" width="35px" height="35px" class="img-responsive mb-2"><span>paie</span></a>
+>>>>>>> f42e267055e93b2d6e85ef18981619331b6ee6a1
                                                 </div>
                                             </div>
                                             <div class="row mt-4">
@@ -1091,8 +1212,13 @@
                                                     </span>
                                                 </div>
                                                 <div class="col-10 ps-4">
+<<<<<<< HEAD
                                                     <h6 class="mb-0 ">{{Auth::user()->name}}</h6>
                                                     <h6 class="mb-0 text-muted text_mail">{{Auth::user()->email}}</h6>
+=======
+                                                    <h6 class="mb-0 ">{{-- {{Auth::user()->name}} --}}</h6>
+                                                    <h6 class="mb-0 text-muted text_mail">{{-- {{Auth::user()->email}} --}}</h6>
+>>>>>>> f42e267055e93b2d6e85ef18981619331b6ee6a1
                                                     <p id="nom_etp" class="mt-2"></p>
                                                 </div>
                                             </div>
@@ -1100,7 +1226,11 @@
                                                 <div class="col-12">
                                                     <div class="row">
                                                         <div class="col">
+<<<<<<< HEAD
                                                             <input type="text" value="{{Auth::user()->id}}" id="id_user" hidden>
+=======
+                                                            <input type="text" value="{{-- {{Auth::user()->id}} --}}" id="id_user" hidden>
+>>>>>>> f42e267055e93b2d6e85ef18981619331b6ee6a1
                                                             <span class="text-muted p-0 test_font">Connécté en tant que :</span>
                                                         </div>
                                                         <div class="col p-0">
@@ -1182,12 +1312,16 @@
                 @endcan
 
             </header>
+<<<<<<< HEAD
             {{-- header --}}
             {{-- content --}}
+=======
+>>>>>>> f42e267055e93b2d6e85ef18981619331b6ee6a1
             <div class="container-fluid content_body px-0 " style="padding-bottom: 1rem; padding-top: 4.5rem;">
                 @yield('content')
 
             </div>
+<<<<<<< HEAD
             {{-- content --}}
             {{-- footer --}}
             {{-- <div class="footer mt-5">
@@ -1241,13 +1375,18 @@
                     </div>
                 </div>
             </div> --}}
+=======
+>>>>>>> f42e267055e93b2d6e85ef18981619331b6ee6a1
             <div class="apprendre mt-3">
                 <div class="row">
                     <div class="col">
                         <p class="m-0 titre_apprendre"> Apprendre</p>
                     </div>
                     <div class="col text-end close" id="closeApprendre">
+<<<<<<< HEAD
                         <!--<i class="bx bx-x " role="button" onclick="afficherTuto();"></i>-->
+=======
+>>>>>>> f42e267055e93b2d6e85ef18981619331b6ee6a1
                         <i class="bx bx-x" role="button"></i>
                     </div>
                     <hr class="mt-2">
@@ -1277,6 +1416,7 @@
                                             de formation</span></a>
                                 </div>
                             </li>
+<<<<<<< HEAD
                             {{-- <li class="list-group-item  align-items-start">
                                 <a class="accordion-toggle d-flex justify-content-between listeApprendre"
                                     id="accApprForm" data-bs-toggle="collapse" data-bs-parent="#accordion"
@@ -1292,6 +1432,8 @@
                                 </div>
                             </li> --}}
 
+=======
+>>>>>>> f42e267055e93b2d6e85ef18981619331b6ee6a1
                             <li class="list-group-item align-items-start listeApprendre">
                                 <a class="accordion-toggle d-flex justify-content-between listeApprendre"
                                     id="accApprInter" data-bs-toggle="collapse" data-bs-parent="#accordion"
@@ -1324,6 +1466,7 @@
                     <div class="tutorielApprendreManager">Manager</div>
                     @endcan
 
+<<<<<<< HEAD
                     @canany(['isFormateur','isFormateurInterne'])
                     <div class="tutorielApprendreFormateur">Formateur</div>
                     @endcanany
@@ -1433,15 +1576,43 @@
         //Pour chaque div de classe randomColor
         $(".randomColor").each(function() {
         //On change la couleur de fond au hasard
+=======
+                    @can('isFormateur')
+                    <div class="tutorielApprendreFormateur">Formateur</div>
+                    @endcan
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{-- <script src="https://code.iconify.design/2/2.1.2/iconify.min.js"></script> --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.2/umd/popper.min.js"
+        integrity="sha512-aDciVjp+txtxTJWsp8aRwttA0vR2sJMk/73ZT7ExuEHv7I5E6iyyobpFOlEFkq59mWW8ToYGuVZFnwhwIUisKA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    {{-- <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js"
+        integrity="sha384-rOA1PnstxnOBLzCLMcre8ybwbTmemjzdNlILg8O7z1lUkLXozs4DHonlDtnE7fpc" crossorigin="anonymous">
+    </script> --}}
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/js/bootstrap.min.js" integrity="sha512-a6ctI6w1kg3J4dSjknHj3aWLEbjitAXAjLDRUxo2wyYmDFRcz2RJuQr5M3Kt8O/TtUSp8n2rAyaXYy1sjoKmrQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
+
+    <script type="text/javascript">
+        $(".randomColor").each(function() {
+>>>>>>> f42e267055e93b2d6e85ef18981619331b6ee6a1
             $(this).css("background-color", '#'+(Math.random()*0xFFFFFF<<0).toString(16).slice(-6));
         });
 
         $("#acf-domaine").change(function() {
             var id = $(this).val();
             $(".categ").empty();
+<<<<<<< HEAD
             // $(".categ").append(
             //     '<option value="null" disable selected hidden>Choisissez la catégorie de formation ...</option>'
             // );
+=======
+>>>>>>> f42e267055e93b2d6e85ef18981619331b6ee6a1
 
             $.ajax({
                 url: "/get_formation",
@@ -1490,6 +1661,7 @@
         $('.module_redirect').on('click', function (e) {
             localStorage.setItem('ActiveTabMod', '#publies');
         });
+<<<<<<< HEAD
 
         $(document).ready(function() {
 
@@ -1604,6 +1776,8 @@
             });
         });
 
+=======
+>>>>>>> f42e267055e93b2d6e85ef18981619331b6ee6a1
         $('.prevent_affichage').on('click', function(e){
             e.stopPropagation();
         });
@@ -1648,6 +1822,7 @@
         else localStorage.removeItem('indiceSidebar');
     });
 
+<<<<<<< HEAD
     $(".deconnexion").on("click", function(e){
         localStorage.clear();
     });
@@ -1656,11 +1831,24 @@
 
     let Tabactive = localStorage.getItem('indiceSidebar');
     if(Tabactive=="parametre")$('.btn_creer.parametre').addClass('active');
+=======
+    $(".deconnexion_text").on("click", function(e){
+        localStorage.clear();
+    });
+
+    let Tabactive = localStorage.getItem('indiceSidebar');
+    if(!(localStorage.getItem('indiceSidebar')))localStorage.setItem('indiceSidebar', document.getElementById("accueil").href);
+    else if(Tabactive=="parametre")$('.btn_creer.parametre').addClass('active');
+>>>>>>> f42e267055e93b2d6e85ef18981619331b6ee6a1
     else if(Tabactive=="vous")$('.btn_vous ').addClass('active');
     else if(Tabactive){
         ($('.nav_list a[href="' + Tabactive + '"]').closest('a')).addClass('active');
         ($('.btn_racourcis a[href="' + Tabactive + '"]').closest('div')).addClass('active');
+<<<<<<< HEAD
     }
+=======
+    }else localStorage.removeItem('indiceSidebar');
+>>>>>>> f42e267055e93b2d6e85ef18981619331b6ee6a1
 </script>
 </body>
 

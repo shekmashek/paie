@@ -21,32 +21,32 @@ class HomeController extends Controller
         /* }); */
         $this->fonct = new FonctionGenerique();
     }
-    public function index(Request $request)
-    {
-        /* echo $request->api_token; */
-        $response = $request->request('GET', '/api/user?api_token='.$request->api_token);
-        echo $response;
-        /* $fonct = new FonctionGenerique();
-        $user_id = Auth::user()->id;
-         if (Gate::allows('isReferent') or Gate::allows('isReferentSimple')) {
-                $id = responsable::where('user_id', Auth::user()->id)->value('id');
-                $entreprise = responsable::where('user_id',$user_id)->value('id');
-                $refs = DB::select('select *,case when genre_id = 1 then "Femme" when genre_id = 2 then "Homme" end sexe_resp from responsables where id = ?',[$id])[0];
-                $entreprise = $this->fonct->findWhereMulitOne("entreprises",["id"],[$refs->entreprise_id]);
-                $projets_counts = $fonct->findWhere("groupe_entreprises",["entreprise_id"],[$refs->entreprise_id]);
-                $cfp_counts = $fonct->findWhere("demmande_etp_cfp",["demmandeur_etp_id","activiter"],[$refs->entreprise_id,1]);
-                $modulesInternes_counts = $fonct->findWhere("modules_interne",["etp_id"],[$refs->entreprise_id]);
-                $projetIntra_counts = DB::select('select grp.id from groupes as grp join groupe_entreprises as grp_etp on grp.id = grp_etp.groupe_id join projets as prj on prj.id = grp.projet_id where grp_etp.entreprise_id = ? and prj.type_formation_id = ?',[$refs->entreprise_id, 1]);
-                $projetInter_counts = DB::select('select grp.id from groupes as grp join groupe_entreprises as grp_etp on grp.id = grp_etp.groupe_id join projets as prj on prj.id = grp.projet_id where grp_etp.entreprise_id = ? and prj.type_formation_id = ?',[$refs->entreprise_id, 2]);
-                $stagiaires_counts = $fonct->findWhere("stagiaires",["entreprise_id"],[$refs->entreprise_id]);
-                $chef_departements_counts = $fonct->findWhere("chef_departements",["entreprise_id"],[$refs->entreprise_id]);
-            return view('admin.profilResponsables', compact('refs','entreprise','projets_counts','cfp_counts','modulesInternes_counts','projetInter_counts','projetIntra_counts','stagiaires_counts','chef_departements_counts'));
-        }
-        if (Gate::allows('isSuperAdmin') || Gate::allows('isAdmin')) {
-            $refs = DB::select('select *,case when genre_id = 1 then "Femme" when genre_id = 2 then "Homme" end sexe_resp from responsables where id = ?',[$id])[0];
-            return view('admin.profilResponsable', compact('refs'));
-        } */
-    }
+    // public function index(Request $request)
+    // {
+    //     /* echo $request->api_token; */
+    //     $response = $request->request('GET', '/api/user?api_token='.$request->api_token);
+    //     echo $response;
+    //     /* $fonct = new FonctionGenerique();
+    //     $user_id = Auth::user()->id;
+    //      if (Gate::allows('isReferent') or Gate::allows('isReferentSimple')) {
+    //             $id = responsable::where('user_id', Auth::user()->id)->value('id');
+    //             $entreprise = responsable::where('user_id',$user_id)->value('id');
+    //             $refs = DB::select('select *,case when genre_id = 1 then "Femme" when genre_id = 2 then "Homme" end sexe_resp from responsables where id = ?',[$id])[0];
+    //             $entreprise = $this->fonct->findWhereMulitOne("entreprises",["id"],[$refs->entreprise_id]);
+    //             $projets_counts = $fonct->findWhere("groupe_entreprises",["entreprise_id"],[$refs->entreprise_id]);
+    //             $cfp_counts = $fonct->findWhere("demmande_etp_cfp",["demmandeur_etp_id","activiter"],[$refs->entreprise_id,1]);
+    //             $modulesInternes_counts = $fonct->findWhere("modules_interne",["etp_id"],[$refs->entreprise_id]);
+    //             $projetIntra_counts = DB::select('select grp.id from groupes as grp join groupe_entreprises as grp_etp on grp.id = grp_etp.groupe_id join projets as prj on prj.id = grp.projet_id where grp_etp.entreprise_id = ? and prj.type_formation_id = ?',[$refs->entreprise_id, 1]);
+    //             $projetInter_counts = DB::select('select grp.id from groupes as grp join groupe_entreprises as grp_etp on grp.id = grp_etp.groupe_id join projets as prj on prj.id = grp.projet_id where grp_etp.entreprise_id = ? and prj.type_formation_id = ?',[$refs->entreprise_id, 2]);
+    //             $stagiaires_counts = $fonct->findWhere("stagiaires",["entreprise_id"],[$refs->entreprise_id]);
+    //             $chef_departements_counts = $fonct->findWhere("chef_departements",["entreprise_id"],[$refs->entreprise_id]);
+    //         return view('admin.profilResponsables', compact('refs','entreprise','projets_counts','cfp_counts','modulesInternes_counts','projetInter_counts','projetIntra_counts','stagiaires_counts','chef_departements_counts'));
+    //     }
+    //     if (Gate::allows('isSuperAdmin') || Gate::allows('isAdmin')) {
+    //         $refs = DB::select('select *,case when genre_id = 1 then "Femme" when genre_id = 2 then "Homme" end sexe_resp from responsables where id = ?',[$id])[0];
+    //         return view('admin.profilResponsable', compact('refs'));
+    //     } */
+    // }
     /* public function index($paginations = null)
     {
         $entreprise_id = 0;
@@ -125,4 +125,17 @@ class HomeController extends Controller
         }
         return view("admin.liste_employer", compact('ref','responsables', 'employers', 'pagination'));
     } */
+        /* $this->fonct = new FonctionGenerique(); */
+    // }
+    public function index(Request $request)
+    {
+        $desigations_sociale = DB::table('paie_cotisations')->get();
+        $numeraires = DB::table('paie_salaire_numeraires')->get();
+        $avantages = DB::table('paie_avantage_en_natures')->get();
+        $primes = DB::table('paie_prime_indemnites')->get();
+        $irsa = DB::table('paie_irsa')->get()->first();
+        $taux_irsa = DB::table('paie_taux_irsa')->get();
+        return view('fiche_de_paie.creer_fiche_de_paie', compact('desigations_sociale','numeraires','avantages','primes','irsa','taux_irsa'));
+    }
+
 }

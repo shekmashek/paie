@@ -1,0 +1,217 @@
+.img_top{
+    position: relative;
+    width: 100px;
+    height: 100px;
+    margin-bottom: 3rem;
+    transition: all 0.5s ease;
+}
+.img_top:hover{
+    transform: scale(1.2);
+    cursor: pointer;
+}
+.error {
+    color: red;
+    font-weight: 400;
+    display: block;
+    padding: 6px 0;
+    font-size: 14px;
+}
+
+.form-control.error {
+    border-color: red;
+    padding: 0.375rem 0.75rem;
+}
+
+.border-imput-login {
+    font-size: 19px;
+    border-radius: 10rem;
+    background-color: #b9b9b9;
+    height: 50px;
+    text-align: start;
+    padding-left: 50px;
+}
+.btn-login {
+    font-size: 16px;
+    background-color: #04803a;
+    width: 300px;
+    height: 48;
+    color: white;
+    border-radius: 5rem;
+}
+.btn_masquer{
+    border: none;
+}
+
+.btn_masquer:focus{
+    border: none;
+    box-shadow: none;
+    outline: none;
+}
+.btn-login:hover {
+    color: white;
+}
+
+.forgot-login {
+    float: right;
+    text-decoration: none;
+    color: #101010;
+    font-weight: bold;
+}
+.forgot-login:hover {
+    color: #e7b000;
+}
+
+.design-login-tete {
+    color: white;
+    background-color: #04803a;
+    width: auto;
+    height: 70px;
+}
+
+.border-form-login {
+    border-radius: 20px;
+}
+
+.logo {
+    width: 138px;
+    height: 49px;
+}
+
+.logo_facture {
+    width: 300px;
+    height: 90px;
+}
+.logo-catalogue {
+    width: 60px;
+    height: 60px;
+}
+.tarif-payer {
+    background-color: #04803a;
+    color: white;
+}
+.tarif-reste-positif {
+    background-color: red;
+    color: white;
+}
+
+.tarif-reste-negatif {
+    background-color: black;
+    color: white;
+    background-color: yellow;
+    color: black;
+}
+
+.titre-fiche-facture {
+    color: rgb(218, 25, 115);
+}
+
+.login img {
+    border-bottom-left-radius: 30px;
+    border-top-left-radius: 30px;
+}
+.container-fluid {
+    margin: 0;
+    padding: 0;
+}
+.formulaire {
+    padding-left: 5rem;
+}
+
+.libele {
+    font-weight: bold;
+    font-size: small;
+}
+.btn-login {
+    width: 80%;
+    border-radius: 0.5rem;
+    background-color: #2811f3;
+    transition: all 0.5s ease;
+}
+
+.btn-login_creer{
+    width: 80%;
+    border-radius: 0.5rem;
+    background-color:  white;
+    transition: all 0.5s ease;
+    color: blue;
+}
+.btn-login:hover {
+    transform: scale(1.1);
+}
+
+.btn-login_creer:hover {
+    background-color: blue;
+    transform: scale(1.1);
+}
+a {
+    text-decoration: none;
+}
+.input_design, .input-group {
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+    outline: none;
+    border-bottom: 1px solid blue;
+    border-radius: 0;
+    transition: all 0.5s ease;
+}
+.input-group:focus, .input_design:focus {
+    border-bottom: 1px solid blue;
+    transform: scale(1.1);
+}
+.forgot-login {
+    padding: 0;
+    background-image: linear-gradient(60deg, #6908d8, #357de9);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+}
+.forgot-login:hover {
+    color: red;
+}
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active{
+    box-shadow: 0 0 0 30px white inset !important;
+    -webkit-box-shadow: 0 0 0 30px white inset !important;
+}
+input[type="password"], input[type="text"]{
+    border: none;
+}
+input[type="email"]{
+    border-radius: none;
+}
+
+.background_transparent {
+    position: relative;
+    background-color: rgba(255, 255, 255, 0.4);
+    padding: 50px 50px 100px 50px;
+    box-sizing: border-box;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
+    width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+hr{
+    width: 50%;
+}
+
+input:focus,
+select:focus,
+textarea:focus{
+    box-shadow: none !important;
+    outline: none !important;
+}
+
+button:focus{
+    box-shadow: none !important;
+    outline: none !important;
+}
+
+a:focus{
+    box-shadow: none !important;
+    outline: none !important;
+}
+

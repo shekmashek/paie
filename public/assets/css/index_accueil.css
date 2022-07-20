@@ -199,6 +199,7 @@ ul li {
 
 /* section1 */
 .section1{
+<<<<<<< HEAD
     background-image: url('../../images/background_images/17section1.webp');
     background-position: center center;
     background-repeat: no-repeat;
@@ -244,6 +245,53 @@ ul li {
     color: white;
     transform: scale(1.5);
   }
+=======
+  background-image: url('../../images/background_images/17section1.webp');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  color: white;
+}
+
+.section1_text{
+  text-align: start;
+  padding-top: 7rem;
+  padding-left: 7rem;
+  position: relative;
+  top: 6rem;
+}
+
+.section1_text h1{
+  font-size: 3.5rem;
+  word-wrap: break-word;
+  font-weight: 900;
+  text-transform: capitalize;
+  letter-spacing: 3px;
+}
+
+.section1_text p{
+  font-size: 1.5rem;
+  margin-bottom: 5rem;
+}
+
+.section1_text .commencer{
+  padding: 1rem 3rem;
+  color: #4222c3;
+  background: white;
+  border: none;
+  border-radius: 30px;
+  font-weight: 700;
+  font-size: 1rem;
+  transition: all 0.5s ease;
+}
+
+.section1_text .commencer:hover{
+  background-image: linear-gradient( 135deg, #FF6FD8 10%, #3813C2 100%);
+  color: white;
+  transform: scale(1.5);
+}
+>>>>>>> f42e267055e93b2d6e85ef18981619331b6ee6a1
 /* section1 */
 
 /* section2 */
