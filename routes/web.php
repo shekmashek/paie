@@ -63,7 +63,7 @@ Route::get('condition_generale_de_vente', 'ConditionController@index')->name('co
     /* return redirect()->away('http://127.0.0.1:8000/sign-in'); */
 /* })->name('sign-in'); */
 
-Route::get('/', 'HomeController@index')->name('home');
+Route::get('/fiche', 'HomeController@index')->name('fiche');
 
 Route::get('condition_generale_de_vente', 'ConditionController@index')->name('condition_generale_de_vente');
 

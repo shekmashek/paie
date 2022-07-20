@@ -95,7 +95,7 @@
                         @if ($num->code=='1000'|| $num->code=='2000'|| $num->code=='3000'|| $num->code=='3001')
                             @if ($num->code=='1000')
                                 <td class="td-salaire-base"><input class="form-control form-control-sm input-salaire-Base" type="number" min="0" value="0" step="0.01" placeholder="Base"></td>
-                            @else 
+                            @else
                                 <td class="td-Base-num"><input class="form-control form-control-sm input-Base" type="number" min="0" value="0" step="0.01" placeholder="Base"></td>
                             @endif
                         @else
@@ -155,7 +155,7 @@
                         <td></td>
                         <td></td>
                         <td></td>
-                    </tr> 
+                    </tr>
                     @endforeach
                     <tr id="sous_t_pi" class="table-light">
                         <td colspan="9" class="text-end">Sous total Primes et Indemnités</td>
@@ -207,7 +207,7 @@
                         <td></td>
                         <td></td>
                     </tr>
-                    
+
                     <th id="title_cotisation" rowspan="4">COTISATION ET SOCIAL</th>
                     @foreach ($desigations_sociale as $ds)
                         <tr id="cotisation">

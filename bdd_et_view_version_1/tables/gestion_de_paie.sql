@@ -9,7 +9,7 @@ update employers set salaire_base=700000.00 where id=2;
 
 CREATE TABLE paie_heures(
     id BIGINT(20) UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    date_travaille DATE NOT NULL,
+    date_travaille DATE NOT NULL
 )ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /* _________________________en attente________________________________ */
 /* fiche de paie */
@@ -191,11 +191,12 @@ CREATE TABLE paie_irsa(
 
 INSERT INTO paie_irsa(code,designation)VALUES('8000','Retenu Irsa');
 
+DROP TABLE IF EXISTS paie_taux_irsa;
 CREATE TABLE paie_taux_irsa(
     id BIGINT(20) UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
     id_irsa BIGINT(20) UNSIGNED NOT NULL,
     salaire_min BIGINT(20) UNSIGNED NOT NULL,
-    salaire_max BIGINT(20) UNSIGNED NOT NULL,
+    salaire_max BIGINT(20) UNSIGNED DEFAULT NULL,
     pourcentage BIGINT(20) UNSIGNED NOT NULL,
     FOREIGN KEY(id_irsa) REFERENCES paie_taux_irsa(id) ON DELETE CASCADE
 )ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
