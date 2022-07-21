@@ -199,7 +199,6 @@ ul li {
 
 /* section1 */
 .section1{
-<<<<<<< HEAD
     background-image: url('../../images/background_images/17section1.webp');
     background-position: center center;
     background-repeat: no-repeat;
@@ -245,7 +244,6 @@ ul li {
     color: white;
     transform: scale(1.5);
   }
-=======
   background-image: url('../../images/background_images/17section1.webp');
   background-position: center center;
   background-repeat: no-repeat;
@@ -291,7 +289,10 @@ ul li {
   color: white;
   transform: scale(1.5);
 }
+<<<<<<< HEAD
 >>>>>>> f42e267055e93b2d6e85ef18981619331b6ee6a1
+=======
+>>>>>>> origin/creerfiche
 /* section1 */
 
 /* section2 */

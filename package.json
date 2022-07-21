@@ -12,9 +12,12 @@
     },
     "devDependencies": {
         "axios": "^0.19",
+        "bootstrap": "^4.0.0",
         "cross-env": "^7.0",
+        "jquery": "^3.2",
         "laravel-mix": "^5.0.1",
         "lodash": "^4.17.13",
+<<<<<<< HEAD
         "resolve-url-loader": "^3.1.0",
         "sass": "^1.15.2",
         "sass-loader": "^8.0.0"
@@ -29,5 +32,13 @@
         "postcss": "^8.1.14",
         "vite": "^2.9.11"
 >>>>>>> f42e267055e93b2d6e85ef18981619331b6ee6a1
+=======
+        "popper.js": "^1.12",
+        "resolve-url-loader": "^2.3.1",
+        "sass": "^1.20.1",
+        "sass-loader": "^8.0.0",
+        "vue": "^2.5.17",
+        "vue-template-compiler": "^2.6.10"
+>>>>>>> origin/creerfiche
     }
 }

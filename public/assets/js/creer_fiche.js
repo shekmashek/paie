@@ -1,5 +1,6 @@
 $( function() {
     /* ajout ligne brut num*/
+
     $('#tbody').delegate(".btn-retirer-h","click", function(e) {
         $(this).parent().parent().remove();
         var nombre_brut = $('#title_brut').attr('rowspan');
@@ -229,7 +230,7 @@ $( function() {
             }
         });
     });
-    
+
 });
 $( function() {
     /* Calcule taux horaire */
@@ -265,7 +266,7 @@ $( function() {
             $('.soustotal_gain_num').html(total_gain_numeraire.replace(/\B(?=(\d{3})+(?!\d))/g, ","));
             $('.soustotal_gain_num').prev().val(total_gain_numeraire);
         });
-        
+
     });
 /* calcule gain et retenu numeraire */
     $('#tbody').delegate('.input-Nombre-h','input', function(e){
